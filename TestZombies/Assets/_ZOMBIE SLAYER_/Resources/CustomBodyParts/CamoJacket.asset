@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c933d6c2e6ce714786d83acdcb10896, type: 3}
+  m_Name: CamoJacket
+  m_EditorClassIdentifier: 
+  itemName: CamoJacket
+  bodyPart: 2
+  bodyParts:
+  - {fileID: 11400000, guid: ed1f1c12ea37dbe4c96a6ed07da94ee9, type: 2}
+  - {fileID: 11400000, guid: ac338eaec3cb1a4498b27a7b71242853, type: 2}
+  - {fileID: 11400000, guid: 43cb4a0e18bc4c744ab44e886ba01e92, type: 2}
+  - {fileID: 11400000, guid: 2fb25b5c0bd823143a8874a413e2056f, type: 2}
+  - {fileID: 11400000, guid: 3cc72bba2a7b461419f6f5593e7e8f73, type: 2}

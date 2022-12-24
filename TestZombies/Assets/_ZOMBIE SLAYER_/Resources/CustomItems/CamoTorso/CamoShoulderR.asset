@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86ed78d9325a9841b07077fbea8c5e7, type: 3}
+  m_Name: CamoShoulderR
+  m_EditorClassIdentifier: 
+  itemName: CamoShoulderR
+  bodyPart: 4
+  sprite: {fileID: 21300000, guid: 77b7cc6a4bf33d04ca6fe746621045f9, type: 3}
