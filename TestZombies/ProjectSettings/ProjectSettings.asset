@@ -156,7 +156,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.aigame.zombieslayer
+    Android: com.DefaultCompany.TestZombies
     Standalone: com.DefaultCompany.TestZombies
   buildNumber:
     Standalone: 0

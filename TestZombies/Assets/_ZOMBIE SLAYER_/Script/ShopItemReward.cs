@@ -64,8 +64,8 @@ public class ShopItemReward : MonoBehaviour {
         else
         {
             SoundManager.PlaySfx(SoundManager.Instance.soundNotEnoughCoin);
-            if (AdsManager.Instance && AdsManager.Instance.isRewardedAdReady())
-                NotEnoughCoins.Instance.ShowUp();
+            //if (AdsManager.Instance && AdsManager.Instance.isRewardedAdReady())
+            //    NotEnoughCoins.Instance.ShowUp();
         }
 	}
 
