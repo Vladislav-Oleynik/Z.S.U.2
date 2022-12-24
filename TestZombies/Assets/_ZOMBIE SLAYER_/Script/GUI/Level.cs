@@ -47,6 +47,7 @@ public class Level : MonoBehaviour
         GlobalValue.levelPlaying = level;
         SoundManager.Click();
         MainMenuHomeScene.Instance.ShowChooseWeapon(true);
+        MainMenuHomeScene.Instance.LoadScene();
     }
     private void OnDrawGizmosSelected()
     {

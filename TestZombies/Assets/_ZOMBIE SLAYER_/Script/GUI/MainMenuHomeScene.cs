@@ -5,16 +5,25 @@ using UnityEngine.UI;
 
 public class MainMenuHomeScene : MonoBehaviour {
 	public static MainMenuHomeScene Instance;
-    public GameObject StartUI;
-	public GameObject MapUI;
-	public GameObject Loading;
-    public GameObject Shop;
-    public GameObject Settings;
-    public GameObject TestOption;
-    public GameObject ChooseWeapon;
-    public GameObject ExitUI;
 
-	public string facebookLink;
+
+    public GameObject StartUI;
+    public GameObject MapUI;
+    public GameObject Loading;
+    //   public GameObject Shop;
+    //   public GameObject Settings;
+    public GameObject TestOption;
+    //   public GameObject ChooseWeapon;
+    //   public GameObject ExitUI;
+
+    public GameObject MainMenu;
+    public GameObject ShopMenu;
+    public GameObject CharactersMenu;
+    public GameObject SettingsMenu;
+    public GameObject MissionsMenu;
+
+
+    public string facebookLink;
     public string twitterLink = "https://twitter.com/";
 
     public Text[] coinTxt;
@@ -26,31 +35,87 @@ public class MainMenuHomeScene : MonoBehaviour {
 
     void Awake(){
 		Instance = this;
-        StartUI.SetActive(true);
-        if (Loading != null)
-			Loading.SetActive (false);
-		if (MapUI != null)
-            MapUI.SetActive (false);
-        if (Settings)
-            Settings.SetActive(false);
-        Shop.SetActive(false);
-        ChooseWeapon.SetActive(false);
-        ExitUI.SetActive(false);
+  //      StartUI.SetActive(true);
+  //      if (Loading != null)
+		//	Loading.SetActive (false);
+		//if (MapUI != null)
+  //          MapUI.SetActive (false);
+        //if (Settings)
+        //    Settings.SetActive(false);
+        //Shop.SetActive(false);
+        //ChooseWeapon.SetActive(false);
+        //ExitUI.SetActive(false);
+
+        MainMenu.SetActive(true);
+        ShopMenu.SetActive(false);
+        CharactersMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
+        MissionsMenu.SetActive(false);
 
         if (GameMode.Instance)
             TestOption.SetActive(GameMode.Instance.showTestOption);
     }
 
+    public void OpenShopMenu()
+    {
+        SoundManager.Click();
+        MainMenu.SetActive(false);
+        ShopMenu.SetActive(true);
+        CharactersMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
+        MissionsMenu.SetActive(false);
+    }
+
+    public void OpenMainMenu()
+    {
+        SoundManager.Click();
+        MainMenu.SetActive(true);
+        ShopMenu.SetActive(false);
+        CharactersMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
+        MissionsMenu.SetActive(false);
+    }
+
+    public void OpenCharactersMenu()
+    {
+        SoundManager.Click();
+        MainMenu.SetActive(false);
+        ShopMenu.SetActive(false);
+        CharactersMenu.SetActive(true);
+        SettingsMenu.SetActive(false);
+        MissionsMenu.SetActive(false);
+    }
+
+    public void OpenSettingsMenu()
+    {
+        SoundManager.Click();
+        MainMenu.SetActive(false);
+        ShopMenu.SetActive(false);
+        CharactersMenu.SetActive(false);
+        SettingsMenu.SetActive(true);
+        MissionsMenu.SetActive(false);
+    }
+
+    public void OpenMissionsMenu()
+    {
+        SoundManager.Click();
+        MainMenu.SetActive(false);
+        ShopMenu.SetActive(false);
+        CharactersMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
+        MissionsMenu.SetActive(true);
+    }
+
     public void OpenShop(bool open)
     {
         SoundManager.Click();
-        Shop.SetActive(open);
+        //Shop.SetActive(open);
     }
 
     public void OpenExitGame(bool show)
     {
         SoundManager.Click();
-        ExitUI.SetActive(show);
+        //ExitUI.SetActive(show);
     }
 
     public void QuitGame()
@@ -62,7 +127,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     public void ShowChooseWeapon(bool open)
     {
         SoundManager.Click();
-        ChooseWeapon.SetActive(open);
+        //ChooseWeapon.SetActive(open);
     }
 
     public void OpenMenuScene()
@@ -142,7 +207,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     public void Setting(bool open)
     {
         SoundManager.Click();
-        Settings.SetActive(open);
+        //Settings.SetActive(open);
     }
 
     #region Music and Sound
