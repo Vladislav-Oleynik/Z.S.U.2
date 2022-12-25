@@ -5,7 +5,7 @@ using UnityEngine;
 public class CustomBodyPart : ScriptableObject
 {
     [SerializeField] private string itemName;
-    public enum BodyPartType { head, face, torso, legs, hands, feet }
+    public enum BodyPartType { head, head_acc, torso, legs, hands, feet }
 
     [SerializeField] private BodyPartType bodyPart;
 

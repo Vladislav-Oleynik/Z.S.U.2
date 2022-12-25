@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c933d6c2e6ce714786d83acdcb10896, type: 3}
+  m_Name: DefaultHands
+  m_EditorClassIdentifier: 
+  itemName: DefaultHands
+  bodyPart: 4
+  bodyParts:
+  - {fileID: 11400000, guid: 2a812cfc178e4d548be0e5bff59e6e4b, type: 2}
+  - {fileID: 11400000, guid: ede9e7eedfc46c44e9d379b988f7fec5, type: 2}

@@ -7,7 +7,7 @@ public class CustomItem : ScriptableObject
     [SerializeField] private string itemName;
 
     public enum BodyPart { 
-        pelvis, torso, head, hat,
+        pelvis, torso, head, head_acc,
         shoulder_r, shoulder_l,
         elbow_r, elbow_l, wrist_r,
         wrist_l, weapon, hip_l,

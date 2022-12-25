@@ -10,7 +10,7 @@ public class PlayerCustomizer : MonoBehaviour
     [SerializeField] private GameObject pelvis;
     [SerializeField] private GameObject torso;
     [SerializeField] private GameObject head;
-    [SerializeField] private GameObject hat;
+    [SerializeField] private GameObject head_acc;
     [SerializeField] private GameObject shoulder_r;
     [SerializeField] private GameObject shoulder_l;
     [SerializeField] private GameObject elbow_r;
@@ -26,56 +26,25 @@ public class PlayerCustomizer : MonoBehaviour
     [SerializeField] private GameObject shoe_r;
     #endregion
 
+    [SerializeField] private PlayerLoadout playerLoadout;
 
     [Header("List of items for customize")]
 
-    [SerializeField] private List<CustomBodyPart> torsoItems, headItems, legsItems, faceItems, feetItems, handsItems;
-
-    private int torsoIdx, headIdx, legsIdx, faceIdx, feetIdx, handsIdx;
-
-    private enum BodyPart { head, face, torso, legs, hands, feet }
+    private int torsoIdx, head_accIdx, legsIdx, headIdx, feetIdx, handsIdx;
 
     private void Start()
     {
-        torsoIdx = headIdx = legsIdx = faceIdx = feetIdx = handsIdx = 0;
-
-        LoadCustomItems();
+        LoadPlayerLoadout();
     }
 
-    //public void ChangeImage(CustomBodyPart cbp) 
-    //{
-    //    switch (cbp.GetBodyPartType())
-    //    {
-    //        case CustomBodyPart.BodyPartType.torso:
-    //            ChangeTorsoItem(cbp);
-    //            break;
-    //        case CustomBodyPart.BodyPartType.legs:
-    //            ChangeLegsItem(cbp);
-    //            break;
-    //        case CustomBodyPart.BodyPartType.head:
-    //            ChangeHeadItem(cbp);
-    //            break;
-    //        case CustomBodyPart.BodyPartType.face:
-    //            ChangeFaceItem(cbp);
-    //            break;
-    //        case CustomBodyPart.BodyPartType.feet:
-    //            ChangeFeetItem(cbp);
-    //            break;
-    //        case CustomBodyPart.BodyPartType.hands:
-    //            ChangeHandsItem(cbp);
-    //            break;
-    //    }
-        
-    //}
-
     public void ChangeTorsoItem()
-    {
-        if (torsoIdx >= torsoItems.Count())
-            torsoIdx = 0;
-
-        if (torsoItems.Count() != 0)
+    {     
+        if (ItemsContainer.torsosList.Count() != 0)
         {
-            foreach (CustomItem item in torsoItems[torsoIdx].GetBodyParts())
+            torsoIdx++;
+            if (torsoIdx >= ItemsContainer.torsosList.Count())
+                torsoIdx = 0;
+            foreach (CustomItem item in ItemsContainer.torsosList[torsoIdx].GetBodyParts())
             {
                 switch (item.GetBodyPart())
                 {
@@ -98,20 +67,18 @@ public class PlayerCustomizer : MonoBehaviour
                         Debug.Log(item + "does not belong to the specified body part");
                         break;
                 }
-            }
-
-            torsoIdx++;
+            }            
         }
     }
 
     public void ChangeLegsItem()
-    {
-        if (legsIdx >= legsItems.Count())
-            legsIdx = 0;
-
-        if (legsItems.Count() != 0)
+    {        
+        if (ItemsContainer.legsList.Count() != 0)
         {
-            foreach (CustomItem item in legsItems[legsIdx].GetBodyParts())
+            legsIdx++;
+            if (legsIdx >= ItemsContainer.legsList.Count())
+                legsIdx = 0;
+            foreach (CustomItem item in ItemsContainer.legsList[legsIdx].GetBodyParts())
             {
                 switch (item.GetBodyPart())
                 {
@@ -134,20 +101,18 @@ public class PlayerCustomizer : MonoBehaviour
                         Debug.Log(item + "does not belong to the specified body part");
                         break;
                 }
-            }
-
-            legsIdx++;
+            }            
         }
     }
 
     public void ChangeHandsItem()
-    {
-        if (handsIdx >= handsItems.Count())
-            handsIdx = 0;
-
-        if (handsItems.Count() != 0)
+    {        
+        if (ItemsContainer.handsList.Count() != 0)
         {
-            foreach (CustomItem item in handsItems[handsIdx].GetBodyParts())
+            handsIdx++;
+            if (handsIdx >= ItemsContainer.handsList.Count())
+                handsIdx = 0;
+            foreach (CustomItem item in ItemsContainer.handsList[handsIdx].GetBodyParts())
             {
                 switch (item.GetBodyPart())
                 {
@@ -162,19 +127,17 @@ public class PlayerCustomizer : MonoBehaviour
                         break;
                 }
             }
-
-            handsIdx++;
         }
     }
 
     public void ChangeFeetItem()
-    {
-        if (feetIdx >= feetItems.Count())
-            feetIdx = 0;
-
-        if (feetItems.Count() != 0)
+    {        
+        if (ItemsContainer.feetList.Count() != 0)
         {
-            foreach (CustomItem item in feetItems[feetIdx].GetBodyParts())
+            feetIdx++;
+            if (feetIdx >= ItemsContainer.feetList.Count())
+                feetIdx = 0;
+            foreach (CustomItem item in ItemsContainer.feetList[feetIdx].GetBodyParts())
             {
                 switch (item.GetBodyPart())
                 {
@@ -189,43 +152,39 @@ public class PlayerCustomizer : MonoBehaviour
                         break;
                 }
             }
-
-            feetIdx++;
         }
     }
 
-    public void ChangeHeadItem()
-    {
-        if (headIdx >= headItems.Count())
-            headIdx = 0;
-
-        if (headItems.Count() != 0)
+    public void ChangeHead_accItem()
+    {        
+        if (ItemsContainer.head_accsList.Count() != 0)
         {
-            foreach (CustomItem item in headItems[headIdx].GetBodyParts())
+            head_accIdx++;
+            if (head_accIdx >= ItemsContainer.head_accsList.Count())
+                head_accIdx = 0;
+            foreach (CustomItem item in ItemsContainer.head_accsList[head_accIdx].GetBodyParts())
             {
                 switch (item.GetBodyPart())
                 {
-                    case CustomItem.BodyPart.hat:
-                        hat.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    case CustomItem.BodyPart.head_acc:
+                        head_acc.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
                         break;
                     default:
                         Debug.Log(item + "does not belong to the specified body part");
                         break;
                 }
             }
-
-            headIdx++;
         }
     }
 
-    public void ChangeFaceItem()
-    {
-        if (faceIdx >= faceItems.Count())
-            faceIdx = 0;
-
-        if (faceItems.Count() != 0)
+    public void ChangeHeadItem()
+    {        
+        if (ItemsContainer.headsList.Count() != 0)
         {
-            foreach (CustomItem item in faceItems[faceIdx].GetBodyParts())
+            headIdx++;
+            if (headIdx >= ItemsContainer.headsList.Count())
+                headIdx = 0;
+            foreach (CustomItem item in ItemsContainer.headsList[headIdx].GetBodyParts())
             {
                 switch (item.GetBodyPart())
                 {
@@ -237,39 +196,196 @@ public class PlayerCustomizer : MonoBehaviour
                         break;
                 }
             }
-
-            faceIdx++;
         }
     }
 
-    private void LoadCustomItems()
-    {
-        List<CustomBodyPart> customItems = Resources.LoadAll<CustomBodyPart>("").ToList();
-        foreach (var item in customItems)
+    private void LoadTorsoItem(CustomBodyPart cbp)
+    {                
+        foreach (CustomItem item in cbp.GetBodyParts())
         {
-            Debug.Log(item.GetItemName());
-            switch (item.GetBodyPartType())
+            switch (item.GetBodyPart())
             {
-                case CustomBodyPart.BodyPartType.face:
-                    faceItems.Add(item);
+                case CustomItem.BodyPart.torso:
+                    torso.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
                     break;
-                case CustomBodyPart.BodyPartType.head:
-                    headItems.Add(item);
+                case CustomItem.BodyPart.shoulder_r:
+                    shoulder_r.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
                     break;
-                case CustomBodyPart.BodyPartType.torso:
-                    torsoItems.Add(item);
+                case CustomItem.BodyPart.shoulder_l:
+                    shoulder_l.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
                     break;
-                case CustomBodyPart.BodyPartType.hands:
-                    handsItems.Add(item);
+                case CustomItem.BodyPart.elbow_r:
+                    elbow_r.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
                     break;
-                case CustomBodyPart.BodyPartType.legs:
-                    legsItems.Add(item);
+                case CustomItem.BodyPart.elbow_l:
+                    elbow_l.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
                     break;
-                case CustomBodyPart.BodyPartType.feet:
-                    feetItems.Add(item);
+                default:
+                    Debug.Log(item + "does not belong to the specified body part");
                     break;
             }
         }
-
     }
+
+    private void LoadLegsItem(CustomBodyPart cbp)
+    {
+        foreach (CustomItem item in cbp.GetBodyParts())
+        {
+            switch (item.GetBodyPart())
+            {
+                case CustomItem.BodyPart.pelvis:
+                    pelvis.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                case CustomItem.BodyPart.shin_l:
+                    shin_l.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                case CustomItem.BodyPart.shin_r:
+                    shin_r.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                case CustomItem.BodyPart.hip_l:
+                    hip_l.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                case CustomItem.BodyPart.hip_r:
+                    hip_r.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                default:
+                    Debug.Log(item + "does not belong to the specified body part");
+                    break;
+            }
+        }
+    }
+
+    private void LoadHandsItem(CustomBodyPart cbp)
+    {
+        foreach (CustomItem item in cbp.GetBodyParts())
+        {
+            switch (item.GetBodyPart())
+            {
+                case CustomItem.BodyPart.wrist_l:
+                    wrist_l.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                case CustomItem.BodyPart.wrist_r:
+                    wrist_r.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                default:
+                    Debug.Log(item + "does not belong to the specified body part");
+                    break;
+            }
+        }
+    }
+
+    private void LoadFeetItem(CustomBodyPart cbp)
+    {
+        foreach (CustomItem item in cbp.GetBodyParts())
+        {
+            switch (item.GetBodyPart())
+            {
+                case CustomItem.BodyPart.shoe_l:
+                    shoe_l.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                case CustomItem.BodyPart.shoe_r:
+                    shoe_r.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                default:
+                    Debug.Log(item + "does not belong to the specified body part");
+                    break;
+            }
+        }
+    }
+
+    private void LoadHead_accItem(CustomBodyPart cbp)
+    {
+        foreach (CustomItem item in cbp.GetBodyParts())
+        {
+            switch (item.GetBodyPart())
+            {
+                case CustomItem.BodyPart.head_acc:
+                    head_acc.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                default:
+                    Debug.Log(item + "does not belong to the specified body part");
+                    break;
+            }
+        }
+    }
+
+    private void LoadHeadItem(CustomBodyPart cbp)
+    {
+        foreach (CustomItem item in cbp.GetBodyParts())
+        {
+            switch (item.GetBodyPart())
+            {
+                case CustomItem.BodyPart.head:
+                    head.GetComponent<SpriteRenderer>().sprite = item.GetSprite();
+                    break;
+                default:
+                    Debug.Log(item + "does not belong to the specified body part");
+                    break;
+            }
+        }
+    }
+
+    private void LoadPlayerLoadout()
+    {
+        if (playerLoadout == null)
+        {
+            Debug.Log("PlayerLoadout == null !!!");
+            return;
+        }
+
+        headIdx = playerLoadout.headIdx;
+        head_accIdx = playerLoadout.head_accIdx;
+        torsoIdx = playerLoadout.torsoIdx;
+        handsIdx = playerLoadout.handsIdx;
+        legsIdx = playerLoadout.legsIdx;
+        feetIdx = playerLoadout.feetIdx;
+
+        if (playerLoadout.customItems.Count != 0)
+        {
+            foreach (CustomBodyPart item in playerLoadout.customItems)
+            {
+                switch (item.GetBodyPartType())
+                {
+                    case CustomBodyPart.BodyPartType.head_acc:
+                        LoadHead_accItem(item);
+                        break;
+                    case CustomBodyPart.BodyPartType.head:
+                        LoadHeadItem(item);
+                        break;
+                    case CustomBodyPart.BodyPartType.torso:
+                        LoadTorsoItem(item);
+                        break;
+                    case CustomBodyPart.BodyPartType.hands:
+                        LoadHandsItem(item);
+                        break;
+                    case CustomBodyPart.BodyPartType.legs:
+                        LoadLegsItem(item);
+                        break;
+                    case CustomBodyPart.BodyPartType.feet:
+                        LoadFeetItem(item);
+                        break;
+                }
+            }
+        }
+    }
+
+    public void SavePlayerLoadout()
+    {
+        playerLoadout.customItems = new List<CustomBodyPart>();
+
+        playerLoadout.customItems.Add(ItemsContainer.headsList[headIdx]);
+        playerLoadout.customItems.Add(ItemsContainer.head_accsList[head_accIdx]);
+        playerLoadout.customItems.Add(ItemsContainer.torsosList[torsoIdx]);
+        playerLoadout.customItems.Add(ItemsContainer.handsList[handsIdx]);
+        playerLoadout.customItems.Add(ItemsContainer.legsList[legsIdx]);
+        playerLoadout.customItems.Add(ItemsContainer.feetList[feetIdx]);
+
+        playerLoadout.headIdx = headIdx;
+        playerLoadout.head_accIdx = head_accIdx;
+        playerLoadout.torsoIdx = torsoIdx;
+        playerLoadout.handsIdx = handsIdx;
+        playerLoadout.legsIdx = legsIdx;
+        playerLoadout.feetIdx = feetIdx;
+    }
+
 }

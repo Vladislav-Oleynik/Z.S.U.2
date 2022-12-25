@@ -351,7 +351,7 @@ MonoBehaviour:
   pelvis: {fileID: 6708805458123425119}
   torso: {fileID: 6708805457528654339}
   head: {fileID: 6708805456248078249}
-  hat: {fileID: 6708805456917891807}
+  head_acc: {fileID: 6708805456917891807}
   shoulder_r: {fileID: 6708805454558634451}
   shoulder_l: {fileID: 6708805456396165961}
   elbow_r: {fileID: 6708805456136353707}
@@ -365,8 +365,7 @@ MonoBehaviour:
   shin_r: {fileID: 6708805457616647929}
   shoe_l: {fileID: 2045916308624349549}
   shoe_r: {fileID: 5755307074103087871}
-  torsoImages:
-  - {fileID: 21300000, guid: ea1657f5afcefd746b5e01bd7412d144, type: 3}
+  playerLoadout: {fileID: 11400000, guid: 70e3ad9e89db67340af2b8fc4092974e, type: 2}
 --- !u!1 &8064018251275987862
 GameObject:
   m_ObjectHideFlags: 0
