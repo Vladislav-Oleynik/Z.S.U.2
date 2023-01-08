@@ -124,7 +124,7 @@ public class GunManager : MonoBehaviour
             currentPos = 0;
         }
 
-        GameManager.Instance.Player.SetGun(listGunPicked[currentPos]);
+        //GameManager.Instance.Player.SetGun(listGunPicked[currentPos]);
         SoundManager.PlaySfx(SoundManager.Instance.swapGun);
     }
 
@@ -138,7 +138,7 @@ public class GunManager : MonoBehaviour
             if(listGunPicked[i].gunID == gunID.gunID)
             {
                 currentPos = i;
-                GameManager.Instance.Player.SetGun(listGunPicked[currentPos]);
+                //GameManager.Instance.Player.SetGun(listGunPicked[currentPos]);
                 SoundManager.PlaySfx(SoundManager.Instance.swapGun);
             }
         }
@@ -146,6 +146,9 @@ public class GunManager : MonoBehaviour
 
     public GunTypeID getGunID()
     {
+        Debug.Log($"listGunPicked = {listGunPicked}");
+        Debug.Log($"listGunPicked.Count = {listGunPicked.Count}");
+        Debug.Log($"listGunPicked[{currentPos}]");
         return listGunPicked[currentPos];
     }
 }

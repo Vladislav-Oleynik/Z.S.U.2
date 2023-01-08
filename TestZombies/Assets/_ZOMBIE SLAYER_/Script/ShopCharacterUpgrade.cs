@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ShopCharacterUpgrade : MonoBehaviour
 {
-    public GunTypeID gunID;
+    //public GunTypeID weapon;
+    public CustomWeapon weapon;
     [Space]
     public Text
         currentRangeDamage, upgradeRangeDamageStep;
@@ -26,12 +27,12 @@ public class ShopCharacterUpgrade : MonoBehaviour
     {
         upgradeDots = new List<Image>();
         upgradeDots.Add(dot.GetComponent<Image>());
-        for (int i = 1; i < gunID.UpgradeSteps.Length; i++)
+        for (int i = 1; i < weapon.UpgradeSteps.Length; i++)
         {
             upgradeDots.Add(Instantiate(dot, dotHoder.transform).GetComponent<Image>());
         }
        
-        if (gunID.CurrentUpgrade + 1 >= gunID.UpgradeSteps.Length)
+        if (weapon.CurrentUpgrade + 1 >= weapon.UpgradeSteps.Length)
             isMax = true;
 
         UpdateParameter();
@@ -39,10 +40,10 @@ public class ShopCharacterUpgrade : MonoBehaviour
 
     void UpdateParameter()
     {
-        lockedObj.SetActive(!gunID.isUnlocked);
-        unlockPriceTxt.text = "$" + gunID.unlockPrice;
+        lockedObj.SetActive(!weapon.isUnlocked);
+        unlockPriceTxt.text = "$" + weapon.unlockPrice;
 
-        currentRangeDamage.text = gunID.UpgradeRangeDamage + "";
+        currentRangeDamage.text = weapon.UpgradeRangeDamage + "";
         if (isMax)
         {
             upgradeRangeDamageStep.enabled = false;
@@ -51,11 +52,11 @@ public class ShopCharacterUpgrade : MonoBehaviour
 
         else
         {
-            price.text = gunID.UpgradeSteps[gunID.CurrentUpgrade + 1].price + "";
-            upgradeRangeDamageStep.text = "-> " + gunID.UpgradeSteps[gunID.CurrentUpgrade + 1].damage;
+            price.text = weapon.UpgradeSteps[weapon.CurrentUpgrade + 1].price + "";
+            upgradeRangeDamageStep.text = "-> " + weapon.UpgradeSteps[weapon.CurrentUpgrade + 1].damage;
         }
        
-        SetDots(gunID.CurrentUpgrade + 1);
+        SetDots(weapon.CurrentUpgrade + 1);
     }
 
     void SetDots(int number)
@@ -74,15 +75,15 @@ public class ShopCharacterUpgrade : MonoBehaviour
         if (isMax)
             return;
 
-        if (GlobalValue.SavedCoins >= gunID.UpgradeSteps[gunID.CurrentUpgrade + 1].price)
+        if (GlobalValue.SavedCoins >= weapon.UpgradeSteps[weapon.CurrentUpgrade + 1].price)
         {
-            GlobalValue.SavedCoins -= gunID.UpgradeSteps[gunID.CurrentUpgrade + 1].price;
+            GlobalValue.SavedCoins -= weapon.UpgradeSteps[weapon.CurrentUpgrade + 1].price;
             SoundManager.PlaySfx(SoundManager.Instance.soundUpgrade);
 
-            gunID.UpgradeCharacter();
+            weapon.UpgradeCharacter();
 
 
-            if (gunID.CurrentUpgrade + 1 >= gunID.UpgradeSteps.Length)
+            if (weapon.CurrentUpgrade + 1 >= weapon.UpgradeSteps.Length)
                 isMax = true;
 
             UpdateParameter();
@@ -93,11 +94,11 @@ public class ShopCharacterUpgrade : MonoBehaviour
 
     public void UnlockPrice()
     {
-        if(GlobalValue.SavedCoins >= gunID.unlockPrice)
+        if(GlobalValue.SavedCoins >= weapon.unlockPrice)
         {
             SoundManager.PlaySfx(SoundManager.Instance.soundUnlockGun);
-            GlobalValue.SavedCoins -= gunID.unlockPrice;
-            gunID.isUnlocked = true;
+            GlobalValue.SavedCoins -= weapon.unlockPrice;
+            weapon.isUnlocked = true;
             UpdateParameter();
         }
     }

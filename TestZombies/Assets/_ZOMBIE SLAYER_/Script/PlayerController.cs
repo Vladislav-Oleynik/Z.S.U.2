@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public enum GunHandlerState { AVAILABLE, SWAPPING, RELOADING, EMPTY }
 public enum ShootingMethob { SingleShoot, AutoShoot}
@@ -9,6 +11,8 @@ public enum WEAPON_STATE { MELEE, GUN}
 [RequireComponent(typeof(PlayerSpineHelper))]
 public class PlayerController : MonoBehaviour, ICanTakeDamage
 {
+    public Text testText;
+
     [Header("SET UP")]
 
     public Animator anim;
@@ -25,7 +29,8 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     [Header("HEALTH")]
     [Range(0, 5000)]
     public int health = 100;
-    public Vector2 healthBarOffset = new Vector2(0, 1.5f);
+    //public Vector2 healthBarOffset = new Vector2(0, 1.5f);
+    public Slider healthbarSlider;
 
     float currentHealth;
 
@@ -36,14 +41,31 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     [Header("WEAPONS")]
     [ReadOnly] public WEAPON_STATE weaponState;
     [ReadOnly] public GunHandlerState GunState;
-    [ReadOnly] public GunTypeID gunTypeID;
+    //[ReadOnly] public GunTypeID gunTypeID;
+    [SerializeField] private PlayerLoadout playerLoadout;
+    [ReadOnly] public CustomWeapon currentWeapon;
+    private int currentFirstWeaponIdx = 0;
+    private int currentSecondWeaponIdx = 0;
+
     public LayerMask targetLayer;
     float lastTimeShooting = -999;
     public AudioClip throwGrenadeSound;
     bool allowShooting = true;
-    protected HealthBarEnemyNew healthBar;
+    //protected HealthBarEnemyNew healthBar;
     PlayerSpineHelper playerSpineHelper;
     public bool isFacingRight { get { return transform.rotation.eulerAngles.y == 0; } }
+
+    public static UnityEvent<CustomWeapon> onWeaponChanged = new UnityEvent<CustomWeapon>();
+
+
+    private void Awake()
+    {
+        CollectGunItem.onWeaponCollected.AddListener(SetGun);
+    }
+    private void OnDestroy()
+    {
+        CollectGunItem.onWeaponCollected.RemoveListener(SetGun);
+    }
 
     void Start()
     {
@@ -51,26 +73,62 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
             anim = GetComponent<Animator>();
 
         GameManager.Instance.Player = this;
-        gunTypeID = GunManager.Instance.getGunID();
-        SetGun(gunTypeID);
-        GunManager.Instance.ResetGunBullet();
+
+        if (playerLoadout.firstWeapons.Count != 0 && playerLoadout.firstWeaponIdx <= playerLoadout.firstWeapons.Count)
+        {
+            SetGun(playerLoadout.firstWeapons[playerLoadout.firstWeaponIdx]);
+            currentFirstWeaponIdx = playerLoadout.firstWeaponIdx;
+        }
+        else if (playerLoadout.secondWeapons.Count != 0 && playerLoadout.secondWeaponIdx <= playerLoadout.secondWeapons.Count)
+        {
+            SetGun(playerLoadout.secondWeapons[playerLoadout.secondWeaponIdx]);
+            currentSecondWeaponIdx = playerLoadout.secondWeaponIdx;
+        }
+        else
+            Debug.Log("We don't have any weapons in playerLoadout or incrorrect indexes");
+
+        //GunManager.Instance.ResetGunBullet();
+        ResetAllBullets();
+
 
         playerSpineHelper = GetComponent<PlayerSpineHelper>();
         playerMeleeWeapon = GetComponent<PlayerMeleeWeapon>();
 
         currentHealth = health;
-        var healthBarObj = (HealthBarEnemyNew)Resources.Load("HealthBar", typeof(HealthBarEnemyNew));
-        healthBar = (HealthBarEnemyNew)Instantiate(healthBarObj, healthBarOffset, Quaternion.identity);
+        //var healthBarObj = (HealthBarEnemyNew)Resources.Load("HealthBar", typeof(HealthBarEnemyNew));
+        //healthBar = (HealthBarEnemyNew)Instantiate(healthBarObj, healthBarOffset, Quaternion.identity);
 
-        healthBar.Init(transform, (Vector3)healthBarOffset);
+        //healthBar.Init(transform, (Vector3)healthBarOffset);
+        healthbarSlider.maxValue = health;
+        healthbarSlider.value = currentHealth;
+
     }
 
     private void OnEnable()
     {
         if (GameManager.Instance)
             GameManager.Instance.Player = this;
+
     }
+    private void OnDisable()
+    {
+    }
+
     public Vector2 finalSpeed;
+
+    private void ResetAllBullets() 
+    {
+        if(playerLoadout.firstWeapons.Count != 0)
+            foreach (var item in playerLoadout.firstWeapons)
+            {
+                item.ResetBullet();
+            }
+        if (playerLoadout.secondWeapons.Count != 0)
+            foreach (var item in playerLoadout.secondWeapons)
+            {
+                item.ResetBullet();
+            }
+    }
 
     public void GetLimitHorizontal()
     {
@@ -80,29 +138,43 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
 
     void Update()
     {
+        //Vector2 testInput = playerInput.PlayerMain.Move.ReadValue<Vector2>();
+        //testText.text = testInput.x.ToString() + testInput.y.ToString();
+        testText.text = "1 = "+isWayBlocked().ToString()+"\n";
+
         if (GameManager.Instance.State != GameManager.GameState.Playing)
             return;
-
+        testText.text += "2 = " + isWayBlocked().ToString() + "\n";
         GetInput();
-
+        testText.text += "3 = " + isWayBlocked().ToString() + "\n";
         finalSpeed = input * moveSpeed * Time.deltaTime;
-
+        testText.text += "4 = " + isWayBlocked().ToString() + "\n";
         GetLimitHorizontal();
+        testText.text += "5 = " + isWayBlocked().ToString() + "\n";
         if (finalSpeed.x > 0 && transform.position.x >= limitRight)
+        {
+            testText.text += "6 = " + isWayBlocked().ToString() + "\n";
             finalSpeed.x = 0;
+        }
         else if (finalSpeed.x < 0 && transform.position.x <= limitLeft)
+        {
+            testText.text += "7 = " + isWayBlocked().ToString() + "\n";
             finalSpeed.x = 0;
-
+        }
+        testText.text += "8 = " + isWayBlocked().ToString() + "\n";
         if ((finalSpeed.x > 0 && !isFacingRight) || (finalSpeed.x < 0 && isFacingRight))
             Flip();
 
-       
 
+        testText.text += "9 = " + isWayBlocked().ToString() + "\n";
+        //testText.text = isWayBlocked().ToString();
         if (!isWayBlocked())
         {
+            testText.text += "10 = " + isWayBlocked().ToString() + "\n";
             transform.Translate(finalSpeed, Space.World);
+            //testText.text = input.x.ToString() + input.y.ToString();
 
-            if(transform.position.y > limitAbovePos)
+            if (transform.position.y > limitAbovePos)
             {
                 transform.position = new Vector3(transform.position.x, limitAbovePos, transform.position.z);
             }else if (transform.position.y < limitBelowPos)
@@ -111,7 +183,8 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
             }
         }
 
-        healthBar.transform.localScale = new Vector2(transform.localScale.x > 0 ? Mathf.Abs(healthBar.transform.localScale.x) : -Mathf.Abs(healthBar.transform.localScale.x), healthBar.transform.localScale.y);
+        //healthBar.transform.localScale = new Vector2(transform.localScale.x > 0 ? Mathf.Abs(healthBar.transform.localScale.x) : -Mathf.Abs(healthBar.transform.localScale.x), healthBar.transform.localScale.y);
+        //healthbarSlider.value = currentHealth;
         AnimSetFloat("speed", input.magnitude);
     }
 
@@ -123,17 +196,27 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     Vector2 input;
     void GetInput()
     {
+        //Vector2 movementInput = playerInput.PlayerMain.Move.ReadValue<Vector2>();
+        //testText.text += "11 = " + isWayBlocked().ToString() + "\n";
+        //input = playerInput.PlayerMain.Move.ReadValue<Vector2>();
+        //input = joystick.GetJoystickMovement();
+        //testText.text = input.x.ToString() + input.y.ToString();
         input = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal") + Input.GetAxis("Horizontal"), CrossPlatformInputManager.GetAxis("Vertical") + Input.GetAxis("Vertical"));
+        //testText.text += "12 = " + isWayBlocked().ToString() + "\n";
+        //testText.text += gunTypeID.ToString() + "\n";
+        //testText.text += gunTypeID.shootingMethob.ToString() + "\n";
 
-        if (gunTypeID.shootingMethob == ShootingMethob.SingleShoot)
+        if (currentWeapon.shootingMethob == ShootingMethob.SingleShoot)
         {
+            testText.text += "13 = " + isWayBlocked().ToString() + "\n";
+            //if (playerInput.PlayerMain.Shoot.triggered)
             if (CrossPlatformInputManager.GetButtonDown("Shoot"))
             {
                 Shoot();
             }
         }
-
-        else if (gunTypeID.shootingMethob == ShootingMethob.AutoShoot)
+        //testText.text += "14 = " + isWayBlocked().ToString() + "\n";
+        else if (currentWeapon.shootingMethob == ShootingMethob.AutoShoot)
         {
             if (CrossPlatformInputManager.GetButton("Shoot"))
             {
@@ -191,54 +274,54 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     {
         if (weaponState == WEAPON_STATE.MELEE)
         {
-            SetGun(GunManager.Instance.getGunID());
+            //SetGun(GunManager.Instance.getGunID());
             return;
         }
 
-        if (!allowShooting || gunTypeID.bullet <= 0)
+        if (!allowShooting || currentWeapon.bullet <= 0)
             return;
 
-        if (Time.time < (lastTimeShooting + gunTypeID.rate))
+        if (Time.time < (lastTimeShooting + currentWeapon.rate))
             return;
 
         if (GunState != GunHandlerState.AVAILABLE)
             return;
 
         lastTimeShooting = Time.time;
-        gunTypeID.bullet--;
+        currentWeapon.bullet--;
         AnimSetTrigger("shoot");
-        for (int i = 0; i < gunTypeID.maxBulletPerShoot; i++)
+        for (int i = 0; i < currentWeapon.maxBulletPerShoot; i++)
         {
             StartCoroutine(FireCo());
         }
 
-        if (gunTypeID.shellFX)
+        if (currentWeapon.shellFX)
         {
-            Vector2 shellPos = gunTypeID.shellPoint.position;
-            var _tempFX = SpawnSystemHelper.GetNextObject(gunTypeID.shellFX, true);
+            Vector2 shellPos = currentWeapon.shellPoint.position;
+            var _tempFX = SpawnSystemHelper.GetNextObject(currentWeapon.shellFX, true);
             _tempFX.transform.position = shellPos;
         }
 
-        SoundManager.PlaySfx(gunTypeID.soundFire, gunTypeID.soundFireVolume);
-        SoundManager.PlaySfx(gunTypeID.shellSound, gunTypeID.shellSoundVolume);
+        SoundManager.PlaySfx(currentWeapon.soundFire, currentWeapon.soundFireVolume);
+        SoundManager.PlaySfx(currentWeapon.shellSound, currentWeapon.shellSoundVolume);
 
         CancelInvoke("CheckBulletRemain");
-        Invoke("CheckBulletRemain", gunTypeID.rate);
+        Invoke("CheckBulletRemain", currentWeapon.rate);
 
-        if (gunTypeID.dualShot)
-            Invoke("ShootSecondGun", gunTypeID.fireSecondGunDelay);
+        if (currentWeapon.dualShot)
+            Invoke("ShootSecondGun", currentWeapon.fireSecondGunDelay);
     }
 
     void ShootSecondGun()
     {
         //gunTypeID.bullet--;
         //SubtractBullet(1);
-        for (int i = 0; i < gunTypeID.maxBulletPerShoot; i++)
+        for (int i = 0; i < currentWeapon.maxBulletPerShoot; i++)
         {
             StartCoroutine(FireCo());
         }
-        SoundManager.PlaySfx(gunTypeID.soundFire, gunTypeID.soundFireVolume);
-        SoundManager.PlaySfx(gunTypeID.shellSound, gunTypeID.shellSoundVolume);
+        SoundManager.PlaySfx(currentWeapon.soundFire, currentWeapon.soundFireVolume);
+        SoundManager.PlaySfx(currentWeapon.shellSound, currentWeapon.shellSoundVolume);
     }
 
     public IEnumerator FireCo()
@@ -246,19 +329,19 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         
         yield return null;
 
-        var _dir = (isFacingRight ? Vector2.right : Vector2.left) + new Vector2(0, Random.Range(-(1f - gunTypeID.accuracy), (1f - gunTypeID.accuracy)));
+        var _dir = (isFacingRight ? Vector2.right : Vector2.left) + new Vector2(0, Random.Range(-(1f - currentWeapon.accuracy), (1f - currentWeapon.accuracy)));
         RaycastHit2D hit = Physics2D.Raycast(playerSpineHelper.GetFireWorldPoint() + (isFacingRight ? Vector2.left : Vector2.right), _dir, 100, targetLayer);
 
-        if (gunTypeID.muzzleTracerFX)
+        if (currentWeapon.muzzleTracerFX)
         {
-            var _tempFX = SpawnSystemHelper.GetNextObject(gunTypeID.muzzleTracerFX, true);
+            var _tempFX = SpawnSystemHelper.GetNextObject(currentWeapon.muzzleTracerFX, true);
             _tempFX.transform.position = playerSpineHelper.GetFireWorldPoint();
             _tempFX.transform.right = _dir;
         }
 
-        if (gunTypeID.muzzleFX)
+        if (currentWeapon.muzzleFX)
         {
-            var _muzzle = SpawnSystemHelper.GetNextObject(gunTypeID.muzzleFX, playerSpineHelper.GetFireWorldPoint(), true);
+            var _muzzle = SpawnSystemHelper.GetNextObject(currentWeapon.muzzleFX, playerSpineHelper.GetFireWorldPoint(), true);
 
             _muzzle.transform.right = (isFacingRight ? Vector2.right : Vector2.left);
             //_muzzle.transform.parent = firePoint;
@@ -269,13 +352,13 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
             var takeDamage = (ICanTakeDamage)hit.collider.gameObject.GetComponent(typeof(ICanTakeDamage));
             if (takeDamage != null)
             {
-                var finalDamage = (int)(Random.Range(gunTypeID.minPercentAffect * 0.01f, 1f) * gunTypeID.UpgradeRangeDamage);
+                var finalDamage = (int)(Random.Range(currentWeapon.minPercentAffect * 0.01f, 1f) * currentWeapon.UpgradeRangeDamage);
 
                 takeDamage.TakeDamage(finalDamage, Vector2.zero, hit.point, gameObject);
             }
         }
 
-        if (gunTypeID.reloadPerShoot)
+        if (currentWeapon.reloadPerShoot)
         {
             StartCoroutine(ReloadGunSub());
         }
@@ -283,7 +366,7 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
 
     void CheckBulletRemain()
     {
-        if (gunTypeID.bullet <= 0)
+        if (currentWeapon.bullet <= 0)
         {
             GunManager.Instance.NextGun();
         }
@@ -295,9 +378,9 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         //SoundManager.PlaySfx (soundReload, soundReloadVolume);
         AnimSetTrigger("reload");
         AnimSetBool("reloading", true);
-        Invoke("ReloadComplete", gunTypeID.reloadTime);
+        Invoke("ReloadComplete", currentWeapon.reloadTime);
 
-        SoundManager.PlaySfx(gunTypeID.reloadSound, gunTypeID.reloadSoundVolume);
+        SoundManager.PlaySfx(currentWeapon.reloadSound, currentWeapon.reloadSoundVolume);
     }
 
     IEnumerator ReloadGunSub()
@@ -305,7 +388,7 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         SetState(GunHandlerState.RELOADING);
         AnimSetBool("isReloadPerShootNeeded", true);
 
-        yield return new WaitForSeconds(gunTypeID.reloadTime);
+        yield return new WaitForSeconds(currentWeapon.reloadTime);
 
         SetState(GunHandlerState.AVAILABLE);
         AnimSetBool("isReloadPerShootNeeded", false);
@@ -336,15 +419,48 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         }
     }
 
-    public void SetGun(GunTypeID gunID)
+    public void SetGun(CustomWeapon weapon/*GunTypeID gunID*/)
     {
+        Debug.Log("SetGun");
         weaponState = WEAPON_STATE.GUN;
-        anim.runtimeAnimatorController = gunID.animatorOverride;
-        gunTypeID = gunID;
+        anim.runtimeAnimatorController = weapon.animatorOverride;
+        currentWeapon = weapon;
         AnimSetTrigger("swap-gun");
         allowShooting = false;
         SoundManager.PlaySfx(SoundManager.Instance.swapGun);
         Invoke("AllowShooting", 0.3f);
+        
+        onWeaponChanged.Invoke(weapon);
+    }
+
+    public void NextWeapon()
+    {
+        if(currentWeapon.weaponType == CustomWeapon.WEAPON_TYPE.first)
+        {
+            if (playerLoadout.secondWeapons.Count != 0 && currentSecondWeaponIdx + 1 <= playerLoadout.secondWeapons.Count - 1)
+            {
+                currentSecondWeaponIdx++;
+                SetGun(playerLoadout.secondWeapons[currentSecondWeaponIdx]);
+            }
+            else if (playerLoadout.secondWeapons.Count != 0)
+            {
+                SetGun(playerLoadout.secondWeapons[0]);
+                currentSecondWeaponIdx = 0;
+            }
+        }
+        else if (currentWeapon.weaponType == CustomWeapon.WEAPON_TYPE.second)
+        {
+            if (playerLoadout.firstWeapons.Count != 0 &&  currentFirstWeaponIdx + 1 <= playerLoadout.firstWeapons.Count - 1)
+            {
+                currentFirstWeaponIdx++;
+                SetGun(playerLoadout.firstWeapons[currentFirstWeaponIdx]);
+            }
+            else if (playerLoadout.firstWeapons.Count != 0)
+            {
+                SetGun(playerLoadout.firstWeapons[0]);
+                currentSecondWeaponIdx = 0;
+            }
+        }
     }
 
     void AllowShooting()
@@ -399,8 +515,9 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     public void TakeDamage(float damage, Vector2 force, Vector2 hitPoint, GameObject instigator, BODYPART bodyPart = BODYPART.NONE, WeaponEffect weaponEffect = null, WEAPON_EFFECT forceEffect = WEAPON_EFFECT.NONE)
     {
         currentHealth -= damage;
-        if (healthBar)
-            healthBar.UpdateValue(currentHealth / (float)health);
+        //if (healthBar)
+        //    healthBar.UpdateValue(currentHealth / (float)health);
+        healthbarSlider.value = currentHealth;
         if (currentHealth <= 0)
         {
             GameManager.Instance.GameOver();
@@ -419,8 +536,9 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     {
         currentHealth += amount;
         currentHealth = Mathf.Min(currentHealth, health);
-        if (healthBar)
-            healthBar.UpdateValue(currentHealth / (float)health);
+        //if (healthBar)
+        //    healthBar.UpdateValue(currentHealth / (float)health);
+        healthbarSlider.value = currentHealth;
     }
 
     private void OnDrawGizmos()

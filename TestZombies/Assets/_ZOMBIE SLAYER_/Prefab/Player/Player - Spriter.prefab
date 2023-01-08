@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291cae1f0d3754227b196cc8176f52c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testText: {fileID: 0}
   anim: {fileID: 6649697374351650039}
   moveSpeed: 1.35
   limitAbovePos: -0.8
@@ -228,16 +229,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 163840
   health: 100
-  healthBarOffset: {x: 0, y: 1.5}
+  healthbarSlider: {fileID: 0}
   grenade: {fileID: 4602626795380565336, guid: 6e855050eba2e438b897f7a7ccd36dbc, type: 3}
   throwPoint: {fileID: 2172664209069926598}
   weaponState: 0
   GunState: 0
-  gunTypeID: {fileID: 0}
+  playerLoadout: {fileID: 0}
+  currentWeapon: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 3072
   throwGrenadeSound: {fileID: 8300000, guid: 8e16280c491dc467f8b7c4bbae35665c, type: 3}
+  joystick: {fileID: 0}
   finalSpeed: {x: 0, y: 0}
 --- !u!114 &3377777727715855492
 MonoBehaviour:

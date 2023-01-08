@@ -150,6 +150,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ads Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 7416635615699043372, guid: 9014ede3087b2a540a2e30cb2576e5d7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9023522075102643578, guid: 9014ede3087b2a540a2e30cb2576e5d7,
         type: 3}
       propertyPath: m_RootOrder

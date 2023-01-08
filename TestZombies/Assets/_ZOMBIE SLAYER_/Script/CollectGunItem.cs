@@ -1,16 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class CollectGunItem : MonoBehaviour, ICanCollect
 {
-    public GunTypeID gunTypeID;
+    [SerializeField] private CustomWeapon weapon;
     public AudioClip soundCollect;
+    [SerializeField] private PlayerLoadout playerLoadout;
+    public static UnityEvent<CustomWeapon> onWeaponCollected = new UnityEvent<CustomWeapon>();
 
     public void Collect()
     {
         SoundManager.PlaySfx(soundCollect);
-        GunManager.Instance.SetNewGunDuringGameplay(gunTypeID);
+        if (weapon.weaponType == CustomWeapon.WEAPON_TYPE.first)
+        {
+            playerLoadout.firstWeapons.Add(weapon);
+            onWeaponCollected.Invoke(weapon);
+        }
+        else if (weapon.weaponType == CustomWeapon.WEAPON_TYPE.second)
+        {
+            playerLoadout.secondWeapons.Add(weapon);
+            onWeaponCollected.Invoke(weapon);
+        }
+        //GunManager.Instance.SetNewGunDuringGameplay(gunTypeID);
         Destroy(gameObject);
     }
 }

@@ -16,8 +16,8 @@ public class UI_UI : MonoBehaviour
         //healthSlider.value = Mathf.Lerp(healthSlider.value, healthValue, lerpSpeed * Time.deltaTime);
         
         coinTxt.text = GlobalValue.SavedCoins + "";
-        bulletLeft.text = GameManager.Instance.Player.gunTypeID.bullet + "";
-        gunIcon.sprite = GameManager.Instance.Player.gunTypeID.icon;
+        bulletLeft.text = GameManager.Instance.Player.currentWeapon.bullet + "";
+        gunIcon.sprite = GameManager.Instance.Player.currentWeapon.icon;
     }
 
     public void NextGun()

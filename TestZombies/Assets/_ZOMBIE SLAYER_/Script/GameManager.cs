@@ -53,26 +53,26 @@ public class GameManager: MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //if (Input.GetKeyDown(KeyCode.R))
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.R))
-        {
-            PlayerPrefs.DeleteAll();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        //if(Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.R))
+        //{
+        //    PlayerPrefs.DeleteAll();
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //}
 
-        //UNLOCK ALL
-        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.U))
-        {
-            bool isRemoveAd = GlobalValue.RemoveAds;
+        ////UNLOCK ALL
+        //if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.U))
+        //{
+        //    bool isRemoveAd = GlobalValue.RemoveAds;
 
-            PlayerPrefs.DeleteAll();
-            GlobalValue.RemoveAds = isRemoveAd;
+        //    PlayerPrefs.DeleteAll();
+        //    GlobalValue.RemoveAds = isRemoveAd;
 
-            GlobalValue.LevelPass = 9999;
-            SceneManager.LoadScene(0);
-        }
+        //    GlobalValue.LevelPass = 9999;
+        //    SceneManager.LoadScene(0);
+        //}
     }
     
     //called by MenuManager
@@ -138,7 +138,7 @@ public class GameManager: MonoBehaviour {
     private void OnDisable()
     {
 
-        GunManager.Instance.ResetPlayerCarryGun();
+        //GunManager.Instance.ResetPlayerCarryGun();
     }
 
     public void UnlockNextLevel()

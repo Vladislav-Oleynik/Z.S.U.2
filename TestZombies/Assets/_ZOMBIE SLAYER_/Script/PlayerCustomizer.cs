@@ -28,9 +28,19 @@ public class PlayerCustomizer : MonoBehaviour
 
     [SerializeField] private PlayerLoadout playerLoadout;
 
-    [Header("List of items for customize")]
+    private int torsoIdx, head_accIdx, legsIdx, headIdx, feetIdx, handsIdx, firstWeaponIdx, secondWeaponIdx;
 
-    private int torsoIdx, head_accIdx, legsIdx, headIdx, feetIdx, handsIdx;
+    private void Awake()
+    {
+        //if(PlayerController.onWeaponChanged != null)
+            PlayerController.onWeaponChanged.AddListener(LoadWeapon);
+    }
+
+    private void OnDestroy()
+    {
+        //if (PlayerController.onWeaponChanged != null)
+            PlayerController.onWeaponChanged.RemoveListener(LoadWeapon);
+    }
 
     private void Start()
     {
@@ -199,6 +209,31 @@ public class PlayerCustomizer : MonoBehaviour
         }
     }
 
+    public void ChangeFirstWeapon()
+    {
+        if (ItemsContainer.firstWeaponsList.Count() != 0)
+        {
+            firstWeaponIdx++;
+            if (firstWeaponIdx >= ItemsContainer.firstWeaponsList.Count())
+                firstWeaponIdx = 0;
+            weapon.GetComponent<SpriteRenderer>().sprite = ItemsContainer.firstWeaponsList[firstWeaponIdx].icon;
+        }
+        else
+            Debug.Log("firstWeaponsList.Count() == 0");
+    }
+    public void ChangeSecondWeapon()
+    {
+        if (ItemsContainer.secondWeaponsList.Count() != 0)
+        {
+            secondWeaponIdx++;
+            if (secondWeaponIdx >= ItemsContainer.secondWeaponsList.Count())
+                secondWeaponIdx = 0;
+            weapon.GetComponent<SpriteRenderer>().sprite = ItemsContainer.secondWeaponsList[secondWeaponIdx].icon;
+        }
+        else
+            Debug.Log("secondWeaponsList.Count() == 0");
+    }
+
     private void LoadTorsoItem(CustomBodyPart cbp)
     {                
         foreach (CustomItem item in cbp.GetBodyParts())
@@ -325,6 +360,11 @@ public class PlayerCustomizer : MonoBehaviour
         }
     }
 
+    private void LoadWeapon(CustomWeapon cw)
+    {                           
+        weapon.GetComponent<SpriteRenderer>().sprite = cw.icon;
+    }
+
     private void LoadPlayerLoadout()
     {
         if (playerLoadout == null)
@@ -339,6 +379,8 @@ public class PlayerCustomizer : MonoBehaviour
         handsIdx = playerLoadout.handsIdx;
         legsIdx = playerLoadout.legsIdx;
         feetIdx = playerLoadout.feetIdx;
+        firstWeaponIdx = playerLoadout.firstWeaponIdx;
+        secondWeaponIdx = playerLoadout.secondWeaponIdx;
 
         if (playerLoadout.customItems.Count != 0)
         {
@@ -367,11 +409,24 @@ public class PlayerCustomizer : MonoBehaviour
                 }
             }
         }
+
+        if (playerLoadout.firstWeapons.Count() != 0 && firstWeaponIdx <= playerLoadout.firstWeapons.Count())
+        {
+            LoadWeapon(playerLoadout.firstWeapons[firstWeaponIdx]);
+            return;
+        }
+
+        if (playerLoadout.firstWeapons.Count() != 0 && secondWeaponIdx <= playerLoadout.secondWeapons.Count())
+        {
+            LoadWeapon(playerLoadout.firstWeapons[secondWeaponIdx]);
+        }
     }
 
     public void SavePlayerLoadout()
     {
         playerLoadout.customItems = new List<CustomBodyPart>();
+        playerLoadout.firstWeapons = new List<CustomWeapon>();
+        playerLoadout.secondWeapons = new List<CustomWeapon>();
 
         playerLoadout.customItems.Add(ItemsContainer.headsList[headIdx]);
         playerLoadout.customItems.Add(ItemsContainer.head_accsList[head_accIdx]);
@@ -380,12 +435,17 @@ public class PlayerCustomizer : MonoBehaviour
         playerLoadout.customItems.Add(ItemsContainer.legsList[legsIdx]);
         playerLoadout.customItems.Add(ItemsContainer.feetList[feetIdx]);
 
+        playerLoadout.firstWeapons.Add(ItemsContainer.firstWeaponsList[firstWeaponIdx]);
+        playerLoadout.secondWeapons.Add(ItemsContainer.secondWeaponsList[secondWeaponIdx]);
+
         playerLoadout.headIdx = headIdx;
         playerLoadout.head_accIdx = head_accIdx;
         playerLoadout.torsoIdx = torsoIdx;
         playerLoadout.handsIdx = handsIdx;
         playerLoadout.legsIdx = legsIdx;
         playerLoadout.feetIdx = feetIdx;
+        playerLoadout.firstWeaponIdx = firstWeaponIdx;
+        playerLoadout.secondWeaponIdx = secondWeaponIdx;
     }
 
 }

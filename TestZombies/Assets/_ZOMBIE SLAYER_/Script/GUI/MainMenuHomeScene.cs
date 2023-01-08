@@ -26,7 +26,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     public string facebookLink;
     public string twitterLink = "https://twitter.com/";
 
-    public Text[] coinTxt;
+    //public Text[] coinTxt;
 
     [Header("Sound and Music")]
     public Image soundImage;
@@ -167,10 +167,10 @@ public class MainMenuHomeScene : MonoBehaviour {
     void Update() {
         CheckSoundMusic();
 
-        foreach (var ct in coinTxt)
-        {
-            ct.text = GlobalValue.SavedCoins + "";
-        }
+        //foreach (var ct in coinTxt)
+        //{
+        //    ct.text = GlobalValue.SavedCoins + "";
+        //}
 	}
 
     public void OpenMap(bool open)

@@ -92,9 +92,9 @@ public class GunTypeID : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class UpgradeStep
-{
-    public int price;
-    public int damage;
-}
+//[System.Serializable]
+//public class UpgradeStep
+//{
+//    public int price;
+//    public int damage;
+//}
