@@ -32,6 +32,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     public Image soundImage;
     public Image musicImage;
     public Sprite soundImageOn, soundImageOff, musicImageOn, musicImageOff;
+    public Text moneyText;
 
     void Awake(){
 		Instance = this;
@@ -52,8 +53,15 @@ public class MainMenuHomeScene : MonoBehaviour {
         SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
 
+        UpdateMoneyText();
+
         if (GameMode.Instance)
             TestOption.SetActive(GameMode.Instance.showTestOption);
+    }
+
+    public void UpdateMoneyText()
+    {
+        moneyText.text = GlobalValue.SavedCoins.ToString();
     }
 
     public void OpenShopMenu()
