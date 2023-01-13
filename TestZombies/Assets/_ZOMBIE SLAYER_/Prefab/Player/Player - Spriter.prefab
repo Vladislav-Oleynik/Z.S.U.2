@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 2128811165098275735}
   m_Layer: 8
   m_Name: Player - Spriter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,13 +234,12 @@ MonoBehaviour:
   throwPoint: {fileID: 2172664209069926598}
   weaponState: 0
   GunState: 0
-  playerLoadout: {fileID: 0}
+  playerLoadout: {fileID: 11400000, guid: 70e3ad9e89db67340af2b8fc4092974e, type: 2}
   currentWeapon: {fileID: 0}
   targetLayer:
     serializedVersion: 2
     m_Bits: 3072
   throwGrenadeSound: {fileID: 8300000, guid: 8e16280c491dc467f8b7c4bbae35665c, type: 3}
-  joystick: {fileID: 0}
   finalSpeed: {x: 0, y: 0}
 --- !u!114 &3377777727715855492
 MonoBehaviour:

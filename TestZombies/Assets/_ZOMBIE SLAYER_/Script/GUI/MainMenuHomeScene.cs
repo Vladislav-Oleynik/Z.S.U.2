@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainMenuHomeScene : MonoBehaviour {
 	public static MainMenuHomeScene Instance;
 
+    public GameObject player;
 
     public GameObject StartUI;
     public GameObject MapUI;
@@ -59,6 +60,8 @@ public class MainMenuHomeScene : MonoBehaviour {
             TestOption.SetActive(GameMode.Instance.showTestOption);
     }
 
+
+    
     public void UpdateMoneyText()
     {
         moneyText.text = GlobalValue.SavedCoins.ToString();
@@ -72,6 +75,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(false);
         SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void OpenMainMenu()
@@ -82,6 +86,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(false);
         SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void OpenCharactersMenu()
@@ -92,6 +97,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(true);
         SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void OpenSettingsMenu()
@@ -102,6 +108,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(false);
         SettingsMenu.SetActive(true);
         MissionsMenu.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void OpenMissionsMenu()
@@ -112,6 +119,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(false);
         SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(true);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
 
     public void OpenShop(bool open)
@@ -170,6 +178,7 @@ public class MainMenuHomeScene : MonoBehaviour {
             SoundManager.Instance.PauseMusic(false);
             SoundManager.PlayMusic(SoundManager.Instance.musicsGame);
         }
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update() {

@@ -44,6 +44,7 @@ public class Level : MonoBehaviour
 
     public void Play()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCustomizer>().SavePlayerLoadout();
         GlobalValue.levelPlaying = level;
         SoundManager.Click();
         MainMenuHomeScene.Instance.ShowChooseWeapon(true);
