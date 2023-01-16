@@ -20,7 +20,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     public GameObject MainMenu;
     public GameObject ShopMenu;
     public GameObject CharactersMenu;
-    public GameObject SettingsMenu;
+    //public GameObject SettingsMenu;
     public GameObject MissionsMenu;
 
 
@@ -51,7 +51,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         MainMenu.SetActive(true);
         ShopMenu.SetActive(false);
         CharactersMenu.SetActive(false);
-        SettingsMenu.SetActive(false);
+        //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
 
         UpdateMoneyText();
@@ -73,7 +73,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         MainMenu.SetActive(false);
         ShopMenu.SetActive(true);
         CharactersMenu.SetActive(false);
-        SettingsMenu.SetActive(false);
+        //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
@@ -84,7 +84,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         MainMenu.SetActive(true);
         ShopMenu.SetActive(false);
         CharactersMenu.SetActive(false);
-        SettingsMenu.SetActive(false);
+        //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(true);
     }
@@ -95,21 +95,21 @@ public class MainMenuHomeScene : MonoBehaviour {
         MainMenu.SetActive(false);
         ShopMenu.SetActive(false);
         CharactersMenu.SetActive(true);
-        SettingsMenu.SetActive(false);
+        //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
 
-    public void OpenSettingsMenu()
-    {
-        SoundManager.Click();
-        MainMenu.SetActive(false);
-        ShopMenu.SetActive(false);
-        CharactersMenu.SetActive(false);
-        SettingsMenu.SetActive(true);
-        MissionsMenu.SetActive(false);
-        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
-    }
+    //public void OpenSettingsMenu()
+    //{
+    //    SoundManager.Click();
+    //    MainMenu.SetActive(false);
+    //    ShopMenu.SetActive(false);
+    //    CharactersMenu.SetActive(false);
+    //    //SettingsMenu.SetActive(true);
+    //    MissionsMenu.SetActive(false);
+    //    GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
+    //}
 
     public void OpenMissionsMenu()
     {
@@ -117,7 +117,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         MainMenu.SetActive(false);
         ShopMenu.SetActive(false);
         CharactersMenu.SetActive(false);
-        SettingsMenu.SetActive(false);
+        //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
