@@ -12,7 +12,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     public GameObject MapUI;
     public GameObject Loading;
     //   public GameObject Shop;
-    //   public GameObject Settings;
+    public GameObject Settings;
     public GameObject TestOption;
     //   public GameObject ChooseWeapon;
     //   public GameObject ExitUI;
@@ -22,6 +22,8 @@ public class MainMenuHomeScene : MonoBehaviour {
     public GameObject CharactersMenu;
     //public GameObject SettingsMenu;
     public GameObject MissionsMenu;
+    public GameObject GameModePopup;
+    public GameObject ExitPopup;
 
 
     public string facebookLink;
@@ -42,8 +44,8 @@ public class MainMenuHomeScene : MonoBehaviour {
 		//	Loading.SetActive (false);
 		//if (MapUI != null)
   //          MapUI.SetActive (false);
-        //if (Settings)
-        //    Settings.SetActive(false);
+        if (Settings)
+            Settings.SetActive(false);
         //Shop.SetActive(false);
         //ChooseWeapon.SetActive(false);
         //ExitUI.SetActive(false);
@@ -120,6 +122,21 @@ public class MainMenuHomeScene : MonoBehaviour {
         //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void GameModeChange(bool open)
+    {
+        SoundManager.Click();
+        GameModePopup.SetActive(open);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(!open);
+    }
+
+    public void Exit(bool close)
+    {
+        SoundManager.Click();
+        ExitPopup.SetActive(close);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(!close);
+        
     }
 
     public void OpenShop(bool open)
@@ -224,7 +241,8 @@ public class MainMenuHomeScene : MonoBehaviour {
     public void Setting(bool open)
     {
         SoundManager.Click();
-        //Settings.SetActive(open);
+        Settings.SetActive(open);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(!open);
     }
 
     #region Music and Sound
