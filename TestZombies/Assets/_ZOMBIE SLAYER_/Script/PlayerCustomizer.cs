@@ -381,6 +381,7 @@ public class PlayerCustomizer : MonoBehaviour
         feetIdx = playerLoadout.feetIdx;
         firstWeaponIdx = playerLoadout.firstWeaponIdx;
         secondWeaponIdx = playerLoadout.secondWeaponIdx;
+        //now only one weapon of each type
 
         if (playerLoadout.customItems.Count != 0)
         {
@@ -410,15 +411,17 @@ public class PlayerCustomizer : MonoBehaviour
             }
         }
 
-        if (playerLoadout.firstWeapons.Count() != 0 && firstWeaponIdx <= playerLoadout.firstWeapons.Count())
+        if (playerLoadout.firstWeapons.Count() != 0 /*&& firstWeaponIdx <= playerLoadout.firstWeapons.Count()*/)
         {
-            LoadWeapon(playerLoadout.firstWeapons[firstWeaponIdx]);
+            //LoadWeapon(playerLoadout.firstWeapons[firstWeaponIdx]);
+            LoadWeapon(playerLoadout.firstWeapons[0]);
             return;
         }
 
-        if (playerLoadout.firstWeapons.Count() != 0 && secondWeaponIdx <= playerLoadout.secondWeapons.Count())
+        if (playerLoadout.secondWeapons.Count() != 0 /*&& secondWeaponIdx <= playerLoadout.secondWeapons.Count()*/)
         {
-            LoadWeapon(playerLoadout.firstWeapons[secondWeaponIdx]);
+            //LoadWeapon(playerLoadout.secondWeapons[secondWeaponIdx]);
+            LoadWeapon(playerLoadout.secondWeapons[0]);
         }
     }
 

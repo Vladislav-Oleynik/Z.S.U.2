@@ -16,6 +16,8 @@ public class ItemsContainer : MonoBehaviour
 
     private int firstWeaponIdx, secondWeaponIdx;
 
+    public PlayerLoadout loadout;
+
     private void Start()
     {
         head_accsList = head_accs;
@@ -28,16 +30,21 @@ public class ItemsContainer : MonoBehaviour
         secondWeaponsList = secondWeapons;
         firstWeaponIdx = secondWeaponIdx = 0;
 
+        firstWeaponIdx = loadout.firstWeaponIdx;
+        secondWeaponIdx = loadout.secondWeaponIdx;
+
         firstWeapon.sprite = firstWeapon.sprite;
         secondWeapon.sprite = secondWeapon.sprite;
 
         if (firstWeaponsList.Count != 0)
-            firstWeapon.sprite = firstWeaponsList[0].icon;
+            firstWeapon.sprite = firstWeaponsList[firstWeaponIdx].icon;
+        //firstWeapon.sprite = firstWeaponsList[0].icon;
         else
             Debug.Log("firstWeaponsList.Count == 0");
 
         if (secondWeaponsList.Count != 0)
-            secondWeapon.sprite = secondWeaponsList[0].icon;
+            secondWeapon.sprite = secondWeaponsList[secondWeaponIdx].icon;
+        //secondWeapon.sprite = secondWeaponsList[0].icon;
         else
             Debug.Log("secondWeaponsList.Count == 0");
     }

@@ -37,6 +37,7 @@ public class Level : MonoBehaviour
         else
         {
             lockContainer.SetActive(true);
+            openingContainer.SetActive(true);
         }
 
         GetComponent<Button>().interactable = openLevel;

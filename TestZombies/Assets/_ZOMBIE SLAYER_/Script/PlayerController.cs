@@ -74,15 +74,21 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
 
         GameManager.Instance.Player = this;
 
-        if (playerLoadout.firstWeapons.Count != 0 && playerLoadout.firstWeaponIdx <= playerLoadout.firstWeapons.Count)
+        if (playerLoadout.firstWeapons.Count != 0 /*&& playerLoadout.firstWeaponIdx <= playerLoadout.firstWeapons.Count*/)
         {
-            SetGun(playerLoadout.firstWeapons[playerLoadout.firstWeaponIdx]);
-            currentFirstWeaponIdx = playerLoadout.firstWeaponIdx;
+            //SetGun(playerLoadout.firstWeapons[playerLoadout.firstWeaponIdx]);
+            //currentFirstWeaponIdx = playerLoadout.firstWeaponIdx;
+            //now we have only one weapon of each type
+            SetGun(playerLoadout.firstWeapons[0]);
+            currentFirstWeaponIdx = 0;
         }
-        else if (playerLoadout.secondWeapons.Count != 0 && playerLoadout.secondWeaponIdx <= playerLoadout.secondWeapons.Count)
+        else if (playerLoadout.secondWeapons.Count != 0 /*&& playerLoadout.secondWeaponIdx <= playerLoadout.secondWeapons.Count*/)
         {
-            SetGun(playerLoadout.secondWeapons[playerLoadout.secondWeaponIdx]);
-            currentSecondWeaponIdx = playerLoadout.secondWeaponIdx;
+            //SetGun(playerLoadout.secondWeapons[playerLoadout.secondWeaponIdx]);
+            //currentSecondWeaponIdx = playerLoadout.secondWeaponIdx;
+            //now we have only one weapon of each type
+            SetGun(playerLoadout.secondWeapons[0]);
+            currentSecondWeaponIdx = 0;
         }
         else
             Debug.Log("We don't have any weapons in playerLoadout or incrorrect indexes");

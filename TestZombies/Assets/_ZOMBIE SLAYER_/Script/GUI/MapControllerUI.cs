@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class MapControllerUI : MonoBehaviour {
@@ -12,8 +13,16 @@ public class MapControllerUI : MonoBehaviour {
 
     public Button nextBtn, preBtn;
 
+    public Sprite emptyCell;
+
+    public List<Image> allCells;
+
+    public Text missionText;
+
 	void Start () {
         SetWorldNumber();
+        if (allCells.Count != 0)
+            allCells[0].transform.GetChild(0).gameObject.SetActive(true);
     }
 
     void SetWorldNumber()
@@ -98,9 +107,32 @@ public class MapControllerUI : MonoBehaviour {
 
         SetWorldNumber();
 
+        DrawCells();
+
+        ChangeMissionText();
 
         allowPressButton = true;
 
+    }
+
+    private void ChangeMissionText()
+    {
+        missionText.text = "Текст місії";
+    }
+
+    private void DrawCells()
+    {
+        for (int i = 0; i < allCells.Count; i++)
+        {
+            if (i == currentPos)
+            {
+                allCells[i].transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                allCells[i].transform.GetChild(0).gameObject.SetActive(false);
+            }
+        }
     }
 
     public void Pre()
@@ -143,6 +175,9 @@ public class MapControllerUI : MonoBehaviour {
 
         SetWorldNumber();
 
+        DrawCells();
+
+        ChangeMissionText();
 
         allowPressButton = true;
 
