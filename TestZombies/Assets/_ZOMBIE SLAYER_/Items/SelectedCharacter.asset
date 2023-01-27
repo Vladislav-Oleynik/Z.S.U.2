@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1614e761a98e06a4e882702a68175e65, type: 3}
   m_Name: SelectedCharacter
   m_EditorClassIdentifier: 
-  selectedCharacterPrefab: {fileID: 3397689850792161124, guid: aa3d95900ca3d72438fe9659a517268a,
+  selectedCharacterPrefab: {fileID: 3397689850792161124, guid: c4800791f64f33f41968d10976cbb4f5,
     type: 3}
+  allCharacters:
+  - {fileID: 3397689850792161124, guid: c4800791f64f33f41968d10976cbb4f5, type: 3}
+  - {fileID: 3397689850792161124, guid: aa3d95900ca3d72438fe9659a517268a, type: 3}
+  - {fileID: 3397689850792161124, guid: 745155f9f5bda3a448ced5b6c0f6fd42, type: 3}
+  characterSelectorIdx: 0

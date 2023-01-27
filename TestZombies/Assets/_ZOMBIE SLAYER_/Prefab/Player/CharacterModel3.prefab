@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8151107218116612387}
   - component: {fileID: 3567200838306401003}
   m_Layer: 0
-  m_Name: CharacterModel2
+  m_Name: CharacterModel3
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,6 +75,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ae3fa3e18e6ae4e962566ae76de033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 10
+  isUnlocked: 0
 --- !u!1001 &3634963444605905436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: f2e3a3acae6b5554aa24bfa5be9e9678,
+      objectReference: {fileID: 21300000, guid: 9e786b4b2db3dd84bb2fc22459981d5a,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0db3b9ad86bb9db4091bf1873c804f41, type: 3}
