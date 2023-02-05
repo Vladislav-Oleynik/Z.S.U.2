@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SelectOrBuy : MonoBehaviour
 {
@@ -39,12 +38,12 @@ public class SelectOrBuy : MonoBehaviour
 
         if(charStats.isUnlocked)
         {
-            button.transform.GetChild(0).GetComponent<Text>().text = "Select";
+            button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Select";
             isSelectable = true;
         }
         else
         {
-            button.transform.GetChild(0).GetComponent<Text>().text = charStats.price + "$";
+            button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = charStats.price + "$";
             isSelectable = false;
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenuHomeScene : MonoBehaviour {
 	public static MainMenuHomeScene Instance;
@@ -35,7 +36,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     public Image soundImage;
     public Image musicImage;
     public Sprite soundImageOn, soundImageOff, musicImageOn, musicImageOff;
-    public Text moneyText;
+    public TextMeshProUGUI moneyText;
 
     void Awake(){
 		Instance = this;

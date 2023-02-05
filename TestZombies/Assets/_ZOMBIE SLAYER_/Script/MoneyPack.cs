@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MoneyPack : MonoBehaviour
 {
@@ -7,9 +8,9 @@ public class MoneyPack : MonoBehaviour
 
     public float priceOfPack = 0f;
 
-    public Text moneyText;
+    public TextMeshProUGUI moneyText;
 
-    public Text priceText;
+    public TextMeshProUGUI priceText;
 
     void Start()
     {

@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class FlashScene : MonoBehaviour {
 
@@ -20,7 +21,7 @@ public class FlashScene : MonoBehaviour {
 
     public GameObject LoadingObj;
     public Slider slider;
-    public Text progressText;
+    public TextMeshProUGUI progressText;
     IEnumerator LoadAsynchronously(string name)
     {
         LoadingObj.SetActive(false);

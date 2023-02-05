@@ -1,12 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class EquipmentShop : MonoBehaviour
 {
     public float price = 0f;
-    public Text priceText;
+    public TextMeshProUGUI priceText;
 
     void Start()
     {

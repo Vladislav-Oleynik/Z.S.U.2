@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShopCharacterUpgrade : MonoBehaviour
 {
@@ -18,11 +17,11 @@ public class ShopCharacterUpgrade : MonoBehaviour
 
     public CustomWeapon weapon;
 
-    public Text price;
+    public TextMeshProUGUI price;
 
     bool isMax = false;
 
-    public Text currentWeaponLvl;
+    public TextMeshProUGUI currentWeaponLvl;
 
 
     // Start is called before the first frame update

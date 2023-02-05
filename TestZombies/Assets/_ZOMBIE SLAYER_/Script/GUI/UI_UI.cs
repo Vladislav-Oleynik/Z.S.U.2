@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UI_UI : MonoBehaviour
 {
@@ -9,7 +8,7 @@ public class UI_UI : MonoBehaviour
     public Image gunIcon;
     public Text bulletLeft;
     [Space]
-    public Text coinTxt;
+    public TextMeshProUGUI coinTxt;
 
     private void Update()
     {

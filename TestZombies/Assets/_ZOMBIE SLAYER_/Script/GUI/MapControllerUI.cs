@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class MapControllerUI : MonoBehaviour {
 	public RectTransform BlockLevel;
@@ -17,7 +18,7 @@ public class MapControllerUI : MonoBehaviour {
 
     public List<Image> allCells;
 
-    public Text missionText;
+    public TextMeshProUGUI missionText;
 
 	void Start () {
         SetWorldNumber();

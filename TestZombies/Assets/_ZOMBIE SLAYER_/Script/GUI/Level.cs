@@ -4,13 +4,14 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 public class Level : MonoBehaviour
 {
     public int world = 1;
     public int level = 1;
     public bool isUnlock = false;
-    public Text numberTxt;
+    public TextMeshProUGUI numberTxt;
     public GameObject lockContainer, openingContainer, passedContainer;
 
     void Start()
