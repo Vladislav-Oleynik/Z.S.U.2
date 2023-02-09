@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c933d6c2e6ce714786d83acdcb10896, type: 3}
+  m_Name: BlackPants
+  m_EditorClassIdentifier: 
+  itemName: BlackPants
+  bodyPart: 3
+  bodyParts:
+  - {fileID: 11400000, guid: fb6b59870b076d140a83cd7e0c373131, type: 2}
+  - {fileID: 11400000, guid: 5783aaf3e1af9844facff5245e7a88b6, type: 2}
+  - {fileID: 11400000, guid: 5eb95aae4a9ba6b4eae6ed13d3f9d154, type: 2}
+  - {fileID: 11400000, guid: 34e1748282c14d746a459167b9c5663c, type: 2}
+  - {fileID: 11400000, guid: c47d4f094b981b6428fc8e6f07265741, type: 2}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c933d6c2e6ce714786d83acdcb10896, type: 3}
+  m_Name: BrownPants
+  m_EditorClassIdentifier: 
+  itemName: BrownPants
+  bodyPart: 3
+  bodyParts:
+  - {fileID: 11400000, guid: cd58f4b58d0f079499e3fddef05a0d7f, type: 2}
+  - {fileID: 11400000, guid: b52efcd29d81c69489722d5eb2378b52, type: 2}
+  - {fileID: 11400000, guid: 1431c28569530f045b5b1f1dd1196543, type: 2}
+  - {fileID: 11400000, guid: c8a14a360d7934147a18b0a527f5c385, type: 2}
+  - {fileID: 11400000, guid: 5fa8c9278faa2c1448dfcd1aa4a97b4e, type: 2}

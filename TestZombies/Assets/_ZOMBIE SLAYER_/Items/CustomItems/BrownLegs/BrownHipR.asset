@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c86ed78d9325a9841b07077fbea8c5e7, type: 3}
-  m_Name: DefaultHead_acc
+  m_Name: BrownHipR
   m_EditorClassIdentifier: 
-  itemName: DefaultHead_acc
-  bodyPart: 3
-  sprite: {fileID: 21300000, guid: 92e66290aaa6ae54b97b74ea4073bcc7, type: 3}
+  itemName: BrownHipR
+  bodyPart: 12
+  sprite: {fileID: 21300000, guid: 2e1289a199c6d2643881d4ea925e0469, type: 3}

@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c86ed78d9325a9841b07077fbea8c5e7, type: 3}
-  m_Name: DefaultHead_acc
+  m_Script: {fileID: 11500000, guid: 7c933d6c2e6ce714786d83acdcb10896, type: 3}
+  m_Name: BlueGoggles
   m_EditorClassIdentifier: 
-  itemName: DefaultHead_acc
-  bodyPart: 3
-  sprite: {fileID: 21300000, guid: 92e66290aaa6ae54b97b74ea4073bcc7, type: 3}
+  itemName: BlueGoggles
+  bodyPart: 1
+  bodyParts:
+  - {fileID: 11400000, guid: a8015140298fa864696c2b9be7df4d4d, type: 2}

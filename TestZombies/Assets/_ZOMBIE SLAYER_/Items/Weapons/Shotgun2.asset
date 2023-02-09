@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466ed2d9faab11c48bbd2da2aaee0b1b, type: 3}
+  m_Name: Shotgun2
+  m_EditorClassIdentifier: 
+  weaponType: 0
+  unlockDefault: 0
+  gunName: Shotgun2
+  icon: {fileID: 21300000, guid: 3dc29b6e5a526d845b6b7517196f8823, type: 3}
+  unlockPrice: 100
+  animatorOverride: {fileID: 22100000, guid: f052160f649e449c6845f71d85bbc56b, type: 2}
+  maxBullet: 50
+  shootingMethob: 0
+  minPercentAffect: 90
+  rate: 0.2
+  reloadTime: 2
+  accuracy: 0.9
+  shellFX: {fileID: 0}
+  shellPoint: {fileID: 0}
+  soundFire: {fileID: 8300000, guid: e785407df9bd14e6a8cbe448a0711bc0, type: 3}
+  soundFireVolume: 0.5
+  shellSound: {fileID: 0}
+  shellSoundVolume: 0.5
+  reloadSound: {fileID: 8300000, guid: 568d0befeb07b45a2a895d68f1f81833, type: 3}
+  reloadSoundVolume: 0.5
+  reloadPerShoot: 0
+  dualShot: 0
+  fireSecondGunDelay: 0.1
+  isSpreadBullet: 0
+  maxBulletPerShoot: 1
+  muzzleTracerFX: {fileID: 3152374875092216896, guid: f7e5640fa333c934b903a7a87be090b3,
+    type: 3}
+  muzzleFX: {fileID: 7921654476063181378, guid: bb25d2bf2f5bc6d4e8022b5d3b28ef67,
+    type: 3}
+  UpgradeSteps:
+  - price: 80
+    damage: 15
+  - price: 90
+    damage: 25
