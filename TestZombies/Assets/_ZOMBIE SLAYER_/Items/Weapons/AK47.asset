@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AK47
   m_EditorClassIdentifier: 
   weaponType: 1
-  unlockDefault: 0
+  unlockDefault: 1
   gunName: AK47
   icon: {fileID: 21300000, guid: 29a11cefe496aa248940892387f0f15e, type: 3}
   unlockPrice: 100
