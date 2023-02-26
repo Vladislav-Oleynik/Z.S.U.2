@@ -14,6 +14,8 @@ public class Level : MonoBehaviour
     public TextMeshProUGUI numberTxt;
     public GameObject lockContainer, openingContainer, passedContainer;
 
+    public int tmplocklvl = 4;
+
     void Start()
     {
         
@@ -24,6 +26,15 @@ public class Level : MonoBehaviour
         passedContainer.SetActive(false);
 
         numberTxt.text = level + "";
+
+        if (level >= tmplocklvl)
+        {
+            lockContainer.SetActive(true);
+            openingContainer.SetActive(true);
+            GetComponent<Button>().interactable = false;
+            return;
+        }
+
         if (openLevel)
         {
           

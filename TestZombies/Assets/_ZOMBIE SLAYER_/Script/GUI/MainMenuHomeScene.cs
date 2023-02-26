@@ -146,6 +146,12 @@ public class MainMenuHomeScene : MonoBehaviour {
         //Shop.SetActive(open);
     }
 
+    public void CloseStartup()
+    {
+        SoundManager.Click(); 
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(true);
+    }
+
     public void OpenExitGame(bool show)
     {
         SoundManager.Click();
@@ -187,15 +193,16 @@ public class MainMenuHomeScene : MonoBehaviour {
     
 	IEnumerator Start () {
 		CheckSoundMusic();
-        if (GlobalValue.isFirstOpenMainMenu)
-        {
+        //if (GlobalValue.isFirstOpenMainMenu)
+        //{
+            //Debug.Log("GlobalValue.isFirstOpenMainMenu = " + GlobalValue.isFirstOpenMainMenu);
             GlobalValue.isFirstOpenMainMenu = false;
             SoundManager.Instance.PauseMusic(true);
             SoundManager.PlaySfx(SoundManager.Instance.beginSoundInMainMenu);
             yield return new WaitForSeconds(SoundManager.Instance.beginSoundInMainMenu.length);
             SoundManager.Instance.PauseMusic(false);
             SoundManager.PlayMusic(SoundManager.Instance.musicsGame);
-        }
+        //}
         player = GameObject.FindGameObjectWithTag("Player");
     }
 

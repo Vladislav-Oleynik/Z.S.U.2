@@ -31,6 +31,8 @@ public class SelectOrBuy : MonoBehaviour
         if (selectedCharacter.allCharacters.Count <= 0 || selectedCharacter.characterSelectorIdx >= selectedCharacter.allCharacters.Count)
         {
             Debug.Log("Troubles with list or index!");
+            Debug.Log("selectedCharacter.allCharacters.Count = " + selectedCharacter.allCharacters.Count);
+            Debug.Log("selectedCharacter.characterSelectorIdx = " + selectedCharacter.characterSelectorIdx);
             return;
         }
 

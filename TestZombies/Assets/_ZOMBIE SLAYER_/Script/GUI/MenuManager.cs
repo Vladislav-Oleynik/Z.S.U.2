@@ -193,8 +193,13 @@ public class MenuManager : MonoBehaviour, IListener
     public void LoadNextLevel()
     {
         SoundManager.Click();
-        GlobalValue.levelPlaying++;
-        StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name));
+
+        //now we only have 3 levels, so we don't load other levels
+        if (GlobalValue.levelPlaying + 1 < 4)
+        {
+            GlobalValue.levelPlaying++;
+            StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name));
+        }
     }
 
     [Header("Load scene")]

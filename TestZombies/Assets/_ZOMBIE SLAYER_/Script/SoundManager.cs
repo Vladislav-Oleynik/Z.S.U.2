@@ -35,9 +35,9 @@ public class SoundManager : MonoBehaviour {
 	private AudioSource soundFx;
 
     //[Header("BOOST ITEM")]
-   [HideInInspector]  public AudioClip BTsoundOpen;
-	[HideInInspector] public AudioClip BTsoundHide;
-	[HideInInspector] public AudioClip BTsoundUseBoost;
+    [HideInInspector] public AudioClip BTsoundOpen;
+    [HideInInspector] public AudioClip BTsoundHide;
+    [HideInInspector] public AudioClip BTsoundUseBoost;
 
     //public AudioClip switchPlayerSound;
 
@@ -124,7 +124,7 @@ public class SoundManager : MonoBehaviour {
 
 	private void PlaySound(AudioClip clip,AudioSource audioOut){
 		if (clip == null) {
-			//			Debug.Log ("There are no audio file to play", gameObject);
+			//Debug.Log ("There are no audio file to play", gameObject);
 			return;
 		}
 
@@ -140,7 +140,7 @@ public class SoundManager : MonoBehaviour {
 
 	private void PlaySound(AudioClip clip,AudioSource audioOut, float volume){
 		if (clip == null) {
-			//			Debug.Log ("There are no audio file to play", gameObject);
+			//Debug.Log ("There are no audio file to play", gameObject);
 			return;
 		}
 

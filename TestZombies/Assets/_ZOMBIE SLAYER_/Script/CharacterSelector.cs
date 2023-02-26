@@ -50,7 +50,7 @@ public class CharacterSelector : MonoBehaviour
         head_accBtn.onClick.AddListener(() => customizer.ChangeHead_accItem());
 
         headBtn.onClick.RemoveAllListeners();
-        headBtn.onClick.AddListener(() => customizer.ChangeHeadItem());
+        headBtn.onClick.AddListener(() => customizer.ChangeHead_accItem()/*ChangeHeadItem()*/);
 
         torsoBtn.onClick.RemoveAllListeners();
         torsoBtn.onClick.AddListener(() => customizer.ChangeTorsoItem());
