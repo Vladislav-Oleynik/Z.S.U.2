@@ -38,7 +38,7 @@ public class MapControllerUI : MonoBehaviour {
     }
 
     void OnEnable(){
-		SoundManager.PlayMusic (music);
+		SoundManager.PlayMusic(music);
 		Debug.LogWarning ("ON ENALBE");
 
 	}

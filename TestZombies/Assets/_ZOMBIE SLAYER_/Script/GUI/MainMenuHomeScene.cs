@@ -254,13 +254,29 @@ public class MainMenuHomeScene : MonoBehaviour {
     }
 
     #region Music and Sound
+
     public void TurnSound()
     {
         GlobalValue.isSound = !GlobalValue.isSound;
         soundImage.sprite = GlobalValue.isSound ? soundImageOn : soundImageOff;
-
         SoundManager.SoundVolume = GlobalValue.isSound ? 1 : 0;
     }
+
+    //public void Setting(bool open)
+    //{
+    //    SoundManager.Click();
+    //    Settings.SetActive(open);
+    //    GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(!open);
+    //}
+
+    //#region Music and Sound
+    //public void TurnSound()
+    //{
+    //    GlobalValue.isSound = !GlobalValue.isSound;
+    //    soundImage.sprite = GlobalValue.isSound ? soundImageOn : soundImageOff;
+
+    //    SoundManager.SoundVolume = GlobalValue.isSound ? 1 : 0;
+    //}
 
     public void TurnMusic()
     {
