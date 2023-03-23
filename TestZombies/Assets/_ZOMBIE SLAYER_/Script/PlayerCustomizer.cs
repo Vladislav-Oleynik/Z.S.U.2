@@ -44,6 +44,7 @@ public class PlayerCustomizer : MonoBehaviour
 
     private void Start()
     {
+        GlobalValue.LoadPlayerLoadout(ref playerLoadout);
         LoadPlayerLoadout();
     }
 
@@ -451,7 +452,6 @@ public class PlayerCustomizer : MonoBehaviour
         playerLoadout.secondWeaponIdx = secondWeaponIdx;
 
         GlobalValue.SaveLoadout(playerLoadout);
-        GlobalValue.LoadPlayerLoadout(ref playerLoadout);
     }
 
 }

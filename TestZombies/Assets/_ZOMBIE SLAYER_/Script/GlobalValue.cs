@@ -114,33 +114,65 @@ public class GlobalValue : MonoBehaviour {
 
     public static void LoadPlayerLoadout(ref PlayerLoadout loadout) 
     {
-        string test = "1,1,1,0,1,0,0,1|DefaultHead,BlackGoggles,CamoJacket,DefaultHands,BlackPants,BlackShoes|Shotgun|AssaultRifle2";
-        string[] pieces = test.Split(new[] { '|' });
+        string raw_str = PlayerPrefs.GetString("LOADOUT", "0,0,0,0,0,0,0,0|DefaultHead,DefaulHead_acc,DefaultTorso,DefaultHands,DefaultLegs,DefaultFeet|Shotgun|AssaultRifle");
+        Debug.Log(raw_str);
+        string[] pieces = raw_str.Split(new[] { '|' });
+        //string test = "1,1,1,0,1,0,0,1|DefaultHead,BlackGoggles,CamoJacket,DefaultHands,BlackPants,BlackShoes|Shotgun|AssaultRifle2";
+        //string[] pieces = test.Split(new[] { '|' });
         string[] idx = pieces[0].Split(new[] { ',' });
         string[] items = pieces[1].Split(new[] { ',' });
         string[] fweapons = pieces[2].Split(new[] { ',' });
         string[] sweapons = pieces[3].Split(new[] { ',' });
         
-        foreach (var item in idx)
-        {
-            Debug.Log(item + "\n");
-        }
+        //foreach (var item in idx)
+        //{
+        //    Debug.Log(item + "\n");
+        //}
 
-        foreach (var item in items)
-        {
-            Debug.Log(item + "\n");
-        }
+        loadout.head_accIdx = int.Parse(idx[0]);
+        loadout.torsoIdx = int.Parse(idx[1]);
+        loadout.legsIdx = int.Parse(idx[2]);
+        loadout.headIdx = int.Parse(idx[3]);
+        loadout.feetIdx = int.Parse(idx[4]);
+        loadout.handsIdx = int.Parse(idx[5]);
+        loadout.firstWeaponIdx = int.Parse(idx[6]);
+        loadout.secondWeaponIdx = int.Parse(idx[7]);
 
-        foreach (var item in fweapons)
-        {
-            Debug.Log(item + "\n");
-        }
+        //foreach (var item in items)
+        //{
+        //    Debug.Log(item + "\n");
+        //}
 
-        foreach (var item in sweapons)
+        Debug.Log("loadout.customItems[0] = " + loadout.customItems[0]);
+        Debug.Log("ItemsContainer.headsList = " + ItemsContainer.headsList.Count);
+        Debug.Log("ItemsContainer.headsList.Find(x => x.GetItemName() == items[0]) = " + ItemsContainer.headsList.Find(x => x.GetItemName() == items[0]));
+        loadout.customItems[0] = ItemsContainer.headsList.Find(x => x.GetItemName() == items[0]);
+        loadout.customItems[1] = ItemsContainer.head_accsList.Find(x => x.GetItemName() == items[1]);
+        loadout.customItems[2] = ItemsContainer.torsosList.Find(x => x.GetItemName() == items[2]);
+        loadout.customItems[3] = ItemsContainer.handsList.Find(x => x.GetItemName() == items[3]);
+        loadout.customItems[4] = ItemsContainer.legsList.Find(x => x.GetItemName() == items[4]);
+        loadout.customItems[5] = ItemsContainer.feetList.Find(x => x.GetItemName() == items[5]);
+        
+
+        //foreach (var item in fweapons)
+        //{
+        //    Debug.Log(item + "\n");
+        //}
+
+        for (int i = 0; i < loadout.firstWeapons.Count; i++)
         {
-            Debug.Log(item + "\n");
+            loadout.firstWeapons[i] = ItemsContainer.firstWeaponsList.Find(x => x.gunName == fweapons[i]);
+        }        
+
+        //foreach (var item in sweapons)
+        //{
+        //    Debug.Log(item + "\n");
+        //}
+
+        for (int i = 0; i < loadout.firstWeapons.Count; i++)
+        {
+            loadout.firstWeapons[i] = ItemsContainer.secondWeaponsList.Find(x => x.gunName == sweapons[i]);
         }
-        //loadout.head_accIdx = 1;
 
         //TODO: брать название каждого объекта и искать его в ItemsConteiner, проходить по каждому елементу списка и находить совпадающее название, совпавший объект заменять в loadout
 
@@ -193,6 +225,6 @@ public class GlobalValue : MonoBehaviour {
         loadout_str += loadout_idx_str + "|" + loadout_items_str + "|" + loadout_fweapons_str + "|" + loadout_sweapons_str;
         Debug.Log(loadout_str);
 
-        //PlayerPrefs.SetString("LOADOUT_IDX", loadout_str);
+        PlayerPrefs.SetString("LOADOUT", loadout_str);
     }
 }
