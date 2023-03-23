@@ -190,6 +190,8 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage {
         
 		StopAllCoroutines ();
             StartCoroutine(DisableEnemy(AnimationHelper.getAnimationLength(anim, "Die") + 2f));
+
+		GlobalValue.killedZombies++;
     }
 
 	public override void Hit (Vector2 force, bool pushBack = false, bool knockDownRagdoll = false, bool shock = false)

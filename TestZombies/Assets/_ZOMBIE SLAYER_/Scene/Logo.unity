@@ -1099,6 +1099,7 @@ GameObject:
   - component: {fileID: 1584614033}
   - component: {fileID: 1584614035}
   - component: {fileID: 1584614034}
+  - component: {fileID: 1584614036}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1123,7 +1124,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 36}
-  m_SizeDelta: {x: 282, y: 50}
+  m_SizeDelta: {x: 430.09, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1584614034
 MonoBehaviour:
@@ -1145,7 +1146,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LOADING
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e28c9d0de50baed4ebbc784a9322edeb, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 4b92efe7a2653c248a716126d9d5b8f9, type: 2}
@@ -1222,6 +1223,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584614032}
   m_CullTransparentMesh: 1
+--- !u!114 &1584614036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584614032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:bcb1ec7e1b302c34dad456fa42d097a3
+    m_TableEntryReference:
+      m_KeyId: 5182282940416
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1584614034}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 1
 --- !u!1 &1591362076
 GameObject:
   m_ObjectHideFlags: 0

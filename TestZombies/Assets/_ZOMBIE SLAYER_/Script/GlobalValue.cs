@@ -5,6 +5,8 @@ public class GlobalValue : MonoBehaviour {
     public static bool isFirstOpenMainMenu = true;
 	public static int worldPlaying = 1;
 	public static int levelPlaying = 1;
+    public static int killedZombies = 0;
+    public static int killedVehicles = 0;
     //public static int finishGameAtLevel = 50;
 
     public static string WorldReached = "WorldReached";
@@ -108,5 +110,89 @@ public class GlobalValue : MonoBehaviour {
     public static void pickGun(GunTypeID gunID)
     {
         PlayerPrefs.SetString("GUNTYPE" + gunID.gunType, gunID.gunID);
+    }
+
+    public static void LoadPlayerLoadout(ref PlayerLoadout loadout) 
+    {
+        string test = "1,1,1,0,1,0,0,1|DefaultHead,BlackGoggles,CamoJacket,DefaultHands,BlackPants,BlackShoes|Shotgun|AssaultRifle2";
+        string[] pieces = test.Split(new[] { '|' });
+        string[] idx = pieces[0].Split(new[] { ',' });
+        string[] items = pieces[1].Split(new[] { ',' });
+        string[] fweapons = pieces[2].Split(new[] { ',' });
+        string[] sweapons = pieces[3].Split(new[] { ',' });
+        
+        foreach (var item in idx)
+        {
+            Debug.Log(item + "\n");
+        }
+
+        foreach (var item in items)
+        {
+            Debug.Log(item + "\n");
+        }
+
+        foreach (var item in fweapons)
+        {
+            Debug.Log(item + "\n");
+        }
+
+        foreach (var item in sweapons)
+        {
+            Debug.Log(item + "\n");
+        }
+        //loadout.head_accIdx = 1;
+
+        //TODO: брать название каждого объекта и искать его в ItemsConteiner, проходить по каждому елементу списка и находить совпадающее название, совпавший объект заменять в loadout
+
+    }
+
+    public static void SaveLoadout(PlayerLoadout loadout)
+    {
+        string loadout_str = "";
+        string loadout_idx_str = "";
+        string loadout_items_str = "";
+        string loadout_fweapons_str = "";
+        string loadout_sweapons_str = "";
+
+        loadout_idx_str += loadout.head_accIdx + ",";
+        loadout_idx_str += loadout.torsoIdx + ",";
+        loadout_idx_str += loadout.legsIdx + ",";
+        loadout_idx_str += loadout.headIdx + ",";
+        loadout_idx_str += loadout.feetIdx + ",";
+        loadout_idx_str += loadout.handsIdx + ",";
+        loadout_idx_str += loadout.firstWeaponIdx + ",";
+        loadout_idx_str += loadout.secondWeaponIdx;
+
+        for (int i = 0; i < loadout.customItems.Count; i++)
+        {
+            loadout_items_str += loadout.customItems[i].GetItemName();
+            if(i != loadout.customItems.Count - 1) 
+            {
+                loadout_items_str += ",";
+            }
+        }
+
+        for (int i = 0; i < loadout.firstWeapons.Count; i++)
+        {
+            loadout_fweapons_str += loadout.firstWeapons[i].gunName;
+            if (i != loadout.firstWeapons.Count - 1)
+            {
+                loadout_fweapons_str += ",";
+            }
+        }
+
+        for (int i = 0; i < loadout.secondWeapons.Count; i++)
+        {
+            loadout_sweapons_str += loadout.secondWeapons[i].gunName;
+            if (i != loadout.secondWeapons.Count - 1)
+            {
+                loadout_sweapons_str += ",";
+            }
+        }
+
+        loadout_str += loadout_idx_str + "|" + loadout_items_str + "|" + loadout_fweapons_str + "|" + loadout_sweapons_str;
+        Debug.Log(loadout_str);
+
+        //PlayerPrefs.SetString("LOADOUT_IDX", loadout_str);
     }
 }

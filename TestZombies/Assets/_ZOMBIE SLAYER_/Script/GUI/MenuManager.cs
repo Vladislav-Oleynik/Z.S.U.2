@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MenuManager : MonoBehaviour, IListener
 {
@@ -15,6 +15,9 @@ public class MenuManager : MonoBehaviour, IListener
     public GameObject LoadingUI;
     public GameObject TestOption;
     public GameObject MissionInfor;
+    public TextMeshProUGUI zombieKillsText;
+    public TextMeshProUGUI vehicleKillsText;
+
     [Header("Sound and Music")]
     public Image soundImage;
     public Image musicImage;
@@ -37,6 +40,8 @@ public class MenuManager : MonoBehaviour, IListener
         if (GameMode.Instance)
             TestOption.SetActive(GameMode.Instance.showTestOption);
         levelTxt.text = "Level " + GlobalValue.levelPlaying;
+        GlobalValue.killedZombies = 0;
+        GlobalValue.killedVehicles = 0;
     }
 
     public void ShowMissionInfor(bool open)
@@ -115,6 +120,8 @@ public class MenuManager : MonoBehaviour, IListener
     IEnumerator VictoryCo()
     {
         UI.SetActive(false);
+        zombieKillsText.text = GlobalValue.killedZombies.ToString();
+        vehicleKillsText.text = GlobalValue.killedVehicles.ToString();
         yield return new WaitForSeconds(1.5f);
         VictotyUI.SetActive(true);
     }
@@ -141,6 +148,8 @@ public class MenuManager : MonoBehaviour, IListener
 
         yield return new WaitForSeconds(1.5f);
         FailUI.SetActive(true);
+        GlobalValue.killedZombies = 0;
+        GlobalValue.killedVehicles = 0;
     }
 
     public void IOnRespawn()
@@ -187,6 +196,8 @@ public class MenuManager : MonoBehaviour, IListener
     public void RestarLevel()
     {
         SoundManager.Click();
+        GlobalValue.killedZombies = 0;
+        GlobalValue.killedVehicles = 0;
         StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name));
     }
 
@@ -200,6 +211,8 @@ public class MenuManager : MonoBehaviour, IListener
             GlobalValue.levelPlaying++;
             StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name));
         }
+        GlobalValue.killedZombies = 0;
+        GlobalValue.killedVehicles = 0;
     }
 
     [Header("Load scene")]

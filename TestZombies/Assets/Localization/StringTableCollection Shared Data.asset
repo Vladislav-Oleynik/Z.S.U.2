@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: StringTableCollection Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: StringTableCollection
+  m_TableCollectionNameGuidString: bcb1ec7e1b302c34dad456fa42d097a3
+  m_Entries:
+  - m_Id: 5182282940416
+    m_Key: loadingBar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23484157804544
+    m_Key: tapToPlay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1487308501172224
+    m_Key: gameMode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1487414151495680
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1487493310595072
+    m_Key: help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1487556212572160
+    m_Key: exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1488271853109248
+    m_Key: progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1489067906842624
+    m_Key: character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1493102521106432
+    m_Key: characterName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1499463187316736
+    m_Key: store
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1499805375414272
+    m_Key: weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1499852636831744
+    m_Key: equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1500751434235904
+    m_Key: money
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1500823848894464
+    m_Key: gratitude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1561854319149056
+    m_Key: mission
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1561918009655296
+    m_Key: missionText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1567896079843328
+    m_Key: bgm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568086882926592
+    m_Key: soundEffect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568282912112640
+    m_Key: language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569129725313024
+    m_Key: singleplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569306347454464
+    m_Key: multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569796682563584
+    m_Key: exit?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1572149544501248
+    m_Key: victory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1572478566678528
+    m_Key: pause
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1678367543435

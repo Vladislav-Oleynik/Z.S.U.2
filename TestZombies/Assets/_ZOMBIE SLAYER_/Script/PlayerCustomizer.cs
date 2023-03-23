@@ -449,6 +449,9 @@ public class PlayerCustomizer : MonoBehaviour
         playerLoadout.feetIdx = feetIdx;
         playerLoadout.firstWeaponIdx = firstWeaponIdx;
         playerLoadout.secondWeaponIdx = secondWeaponIdx;
+
+        GlobalValue.SaveLoadout(playerLoadout);
+        GlobalValue.LoadPlayerLoadout(ref playerLoadout);
     }
 
 }

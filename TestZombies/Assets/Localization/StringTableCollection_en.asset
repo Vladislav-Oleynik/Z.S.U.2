@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: StringTableCollection_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: bcb1ec7e1b302c34dad456fa42d097a3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5182282940416
+    m_Localized: LOADING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 23484157804544
+    m_Localized: TAP TO PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1487308501172224
+    m_Localized: GAME MODE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1487414151495680
+    m_Localized: SETTINGS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1487493310595072
+    m_Localized: HELP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1487556212572160
+    m_Localized: EXIT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1488271853109248
+    m_Localized: PROGRESS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1489067906842624
+    m_Localized: CHARACTER
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1493102521106432
+    m_Localized: NAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1499463187316736
+    m_Localized: STORE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1499805375414272
+    m_Localized: Weapons
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1499852636831744
+    m_Localized: Equipment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1500751434235904
+    m_Localized: Money
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1500823848894464
+    m_Localized: Gratitude
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1561854319149056
+    m_Localized: MISSION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1561918009655296
+    m_Localized: Mission text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1567896079843328
+    m_Localized: BGM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568086882926592
+    m_Localized: Sound effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1568282912112640
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569129725313024
+    m_Localized: Singleplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569306347454464
+    m_Localized: Multiplayer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1569796682563584
+    m_Localized: Exit?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1572149544501248
+    m_Localized: VICTORY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1572478566678528
+    m_Localized: PAUSE
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
