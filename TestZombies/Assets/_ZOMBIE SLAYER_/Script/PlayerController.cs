@@ -230,11 +230,11 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
             }
         }
 
-
-        if (CrossPlatformInputManager.GetButtonDown("Melee"))
-        {
-            MeleeAttack();
-        }
+        //we try to make auto melee attack when enemy is close eneught
+        //if (CrossPlatformInputManager.GetButtonDown("Melee"))
+        //{
+        //    MeleeAttack();
+        //}
     }
 
     void Flip()
@@ -278,11 +278,19 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
 
     public void Shoot()
     {
-        if (weaponState == WEAPON_STATE.MELEE)
+        RaycastHit2D hit = Physics2D.CircleCast(playerMeleeWeapon.checkPoint.position, playerMeleeWeapon.radiusCheck, Vector2.zero, 0, targetLayer);
+
+        if (hit)
         {
-            //SetGun(GunManager.Instance.getGunID());
+            MeleeAttack();
             return;
         }
+
+        //if (weaponState == WEAPON_STATE.MELEE)
+        //{
+        //    //SetGun(GunManager.Instance.getGunID());
+        //    return;
+        //}
 
         if (!allowShooting || currentWeapon.bullet <= 0)
             return;
