@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using Spine.Unity;
 
 public enum GunHandlerState { AVAILABLE, SWAPPING, RELOADING, EMPTY }
 public enum ShootingMethob { SingleShoot, AutoShoot}
@@ -12,6 +13,14 @@ public enum WEAPON_STATE { MELEE, GUN}
 public class PlayerController : MonoBehaviour, ICanTakeDamage
 {
     public Text testText;
+    [Header("SPINE ANIMATION")]
+    public SkeletonAnimation skeletonAnimation;
+    public AnimationReferenceAsset runAnim;
+    public AnimationReferenceAsset idleAnim;
+    public AnimationReferenceAsset shootAnim;
+    public string currentPlayerState;
+    public string currentAnim;
+
 
     [Header("SET UP")]
 
@@ -191,7 +200,47 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
 
         //healthBar.transform.localScale = new Vector2(transform.localScale.x > 0 ? Mathf.Abs(healthBar.transform.localScale.x) : -Mathf.Abs(healthBar.transform.localScale.x), healthBar.transform.localScale.y);
         //healthbarSlider.value = currentHealth;
-        AnimSetFloat("speed", input.magnitude);
+
+        //old working move animation
+        //AnimSetFloat("speed", input.magnitude);
+
+        //new Spine move animation
+
+        if (input.magnitude > 0.1)
+        {
+            SetPlayerState("Run");
+        }
+        else if (input.magnitude <= 0.1)
+        {
+            SetPlayerState("Idle");
+        }
+        
+    }
+
+    public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timeScale)
+    {
+        if (animation.name.Equals(currentAnim))
+        {
+            return;
+        }
+        skeletonAnimation.state.SetAnimation(0, animation, loop).TimeScale = timeScale;
+        currentAnim = animation.name;
+    }
+
+    public void SetPlayerState(string state)
+    {
+        if (state.Equals("Idle"))
+        {
+            SetAnimation(idleAnim, true, 1f);
+        }
+        else if (state.Equals("Run"))
+        {
+            SetAnimation(runAnim, true, 1f);
+        }
+        else if (state.Equals("Shoot"))
+        {
+            SetAnimation(shootAnim, true, 1f);
+        }
     }
 
     bool isWayBlocked()
