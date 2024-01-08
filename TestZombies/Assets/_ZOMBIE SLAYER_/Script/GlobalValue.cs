@@ -169,9 +169,9 @@ public class GlobalValue : MonoBehaviour {
         //    Debug.Log(item + "\n");
         //}
 
-        for (int i = 0; i < loadout.firstWeapons.Count; i++)
+        for (int i = 0; i < loadout.secondWeapons.Count; i++)
         {
-            loadout.firstWeapons[i] = ItemsContainer.secondWeaponsList.Find(x => x.gunName == sweapons[i]);
+            loadout.secondWeapons[i] = ItemsContainer.secondWeaponsList.Find(x => x.gunName == sweapons[i]);
         }
 
         //TODO: брать название каждого объекта и искать его в ItemsConteiner, проходить по каждому елементу списка и находить совпадающее название, совпавший объект заменять в loadout

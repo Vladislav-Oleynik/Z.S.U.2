@@ -5,20 +5,33 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using Spine.Unity;
+using Spine;
 
 public enum GunHandlerState { AVAILABLE, SWAPPING, RELOADING, EMPTY }
 public enum ShootingMethob { SingleShoot, AutoShoot}
 public enum WEAPON_STATE { MELEE, GUN}
+public enum PlayerState { Idle, Walk, Run }
+public enum PlayerAttackState { Idle, Shoot, Melee }
+
 [RequireComponent(typeof(PlayerSpineHelper))]
 public class PlayerController : MonoBehaviour, ICanTakeDamage
 {
     public Text testText;
     [Header("SPINE ANIMATION")]
     public SkeletonAnimation skeletonAnimation;
+    [SpineSkin] public string baseSkin = "gooset";
+    [SpineSkin(dataField: "skeletonDataAsset")] public string itemSkin;
     public AnimationReferenceAsset runAnim;
     public AnimationReferenceAsset idleAnim;
-    public AnimationReferenceAsset shootAnim;
-    public string currentPlayerState;
+    public AnimationReferenceAsset walkAnim;
+    public AnimationReferenceAsset standShootAnim;
+    public AnimationReferenceAsset walkShootAnim;
+    public AnimationReferenceAsset runShootAnim;
+    public AnimationReferenceAsset standMeleeAnim;
+    public AnimationReferenceAsset walkMeleeAnim;
+    public AnimationReferenceAsset runMeleeAnim;
+    [ReadOnly] public PlayerState currentPlayerState;
+    [ReadOnly] public PlayerAttackState currentPlayerAttackState;
     public string currentAnim;
 
 
@@ -117,6 +130,8 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         healthbarSlider.maxValue = health;
         healthbarSlider.value = currentHealth;
 
+
+        SetupPlayerSkin();
     }
 
     private void OnEnable()
@@ -208,13 +223,23 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
 
         if (input.magnitude > 0.1)
         {
-            SetPlayerState("Run");
+            SetPlayerState(PlayerState.Run);
         }
         else if (input.magnitude <= 0.1)
         {
-            SetPlayerState("Idle");
+            SetPlayerState(PlayerState.Idle);
         }
-        
+    }
+
+    public void SetupPlayerSkin()
+    {
+        Skeleton skeleton = skeletonAnimation.Skeleton;
+        SkeletonData skeletonData = skeleton.Data;
+        Skin characterSkin = new Skin("gooset");
+        characterSkin.AddSkin(skeletonData.FindSkin(baseSkin));
+        characterSkin.AddSkin(skeletonData.FindSkin(itemSkin));
+        skeleton.SetSkin(characterSkin);
+        skeleton.SetSlotsToSetupPose();
     }
 
     public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timeScale)
@@ -224,23 +249,64 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
             return;
         }
         skeletonAnimation.state.SetAnimation(0, animation, loop).TimeScale = timeScale;
-        currentAnim = animation.name;
+        currentAnim = animation.name;        
     }
 
-    public void SetPlayerState(string state)
+    public void SetPlayerState(PlayerState state)
     {
-        if (state.Equals("Idle"))
+        currentPlayerState = state;
+
+        if (state.Equals(PlayerState.Idle))
         {
-            SetAnimation(idleAnim, true, 1f);
+            if (currentPlayerAttackState == PlayerAttackState.Idle)
+            {
+                SetAnimation(idleAnim, true, 1f);
+            }
+            else if (currentPlayerAttackState == PlayerAttackState.Shoot)
+            {
+                SetAnimation(standShootAnim, true, 1f);
+            }
+            else if (currentPlayerAttackState == PlayerAttackState.Melee)
+            {
+                SetAnimation(standMeleeAnim, true, 1f);
+            }
         }
-        else if (state.Equals("Run"))
+        else if (state.Equals(PlayerState.Run))
         {
-            SetAnimation(runAnim, true, 1f);
+            if (currentPlayerAttackState == PlayerAttackState.Idle)
+            {
+                SetAnimation(runAnim, true, 1f);
+            }
+            else if (currentPlayerAttackState == PlayerAttackState.Shoot)
+            {
+                SetAnimation(runShootAnim, true, 1f);
+            }
+            else if (currentPlayerAttackState == PlayerAttackState.Melee)
+            {
+                SetAnimation(runMeleeAnim, true, 1f);
+            }
         }
-        else if (state.Equals("Shoot"))
+        else if (state.Equals(PlayerState.Walk))
         {
-            SetAnimation(shootAnim, true, 1f);
+            if (currentPlayerAttackState == PlayerAttackState.Idle)
+            {
+                SetAnimation(walkAnim, true, 1f);
+            }
+            else if (currentPlayerAttackState == PlayerAttackState.Shoot)
+            {
+                SetAnimation(walkShootAnim, true, 1f);
+            }
+            else if (currentPlayerAttackState == PlayerAttackState.Melee)
+            {
+                SetAnimation(walkMeleeAnim, true, 1f);
+            }
         }
+        SetPlayerAttackState(PlayerAttackState.Idle);
+    }
+
+    public void SetPlayerAttackState(PlayerAttackState state)
+    {
+        currentPlayerAttackState = state;        
     }
 
     bool isWayBlocked()
@@ -341,6 +407,8 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         //    return;
         //}
 
+        SetPlayerAttackState(PlayerAttackState.Shoot);
+
         if (!allowShooting || currentWeapon.bullet <= 0)
             return;
 
@@ -352,7 +420,13 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
 
         lastTimeShooting = Time.time;
         currentWeapon.bullet--;
-        AnimSetTrigger("shoot");
+
+        //old anim
+        //AnimSetTrigger("shoot");
+        //new anim
+
+        
+
         for (int i = 0; i < currentWeapon.maxBulletPerShoot; i++)
         {
             StartCoroutine(FireCo());
@@ -425,6 +499,9 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         {
             StartCoroutine(ReloadGunSub());
         }
+
+        
+
     }
 
     void CheckBulletRemain()
@@ -552,8 +629,10 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         if (Time.time > (playerMeleeWeapon.lastAttackTime + playerMeleeWeapon.rate))
         {
             playerMeleeWeapon.lastAttackTime = Time.time;
-            AnimSetTrigger("melee-attack");
-            
+            //old anim
+            //AnimSetTrigger("melee-attack");
+            //new anim
+            SetPlayerAttackState(PlayerAttackState.Melee);
             Invoke("MeleeCheckEnemy", playerMeleeWeapon.delayToSync);
         }
     }

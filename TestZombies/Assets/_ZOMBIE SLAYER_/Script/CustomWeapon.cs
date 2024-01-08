@@ -7,6 +7,7 @@ public class CustomWeapon : ScriptableObject
     public WEAPON_TYPE weaponType;
     public bool unlockDefault = false;
     public string gunName;
+    public string skinName;
     public Sprite icon;
     public int unlockPrice = 100;
     [Header("ANIMATION")]

@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponType: 0
   unlockDefault: 1
   gunName: Shotgun
+  skinName: shotgun
   icon: {fileID: 21300000, guid: 66edb58c1d811224ebd0d1dcfb8a7713, type: 3}
   unlockPrice: 100
   animatorOverride: {fileID: 22100000, guid: f052160f649e449c6845f71d85bbc56b, type: 2}

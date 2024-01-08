@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponType: 0
   unlockDefault: 1
   gunName: SniperRifle
+  skinName: sniper
   icon: {fileID: 21300000, guid: 5faf8fb98e344014fae49082c0d1e6fc, type: 3}
   unlockPrice: 100
   animatorOverride: {fileID: 22100000, guid: 5fd4b63bbe6dc4a3eadc1a2b696d97cc, type: 2}

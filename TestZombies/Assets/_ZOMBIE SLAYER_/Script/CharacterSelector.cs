@@ -46,23 +46,23 @@ public class CharacterSelector : MonoBehaviour
         Debug.Log(player);
         //PlayerCustomizer customizer = selectedCharacter.selectedCharacterPrefab.GetComponent<PlayerCustomizer>();
 
-        head_accBtn.onClick.RemoveAllListeners();
-        head_accBtn.onClick.AddListener(() => customizer.ChangeHead_accItem());
+        //head_accBtn.onClick.RemoveAllListeners();
+        //head_accBtn.onClick.AddListener(() => customizer.ChangeHead_accItem());
 
-        headBtn.onClick.RemoveAllListeners();
-        headBtn.onClick.AddListener(() => customizer.ChangeHead_accItem()/*ChangeHeadItem()*/);
+        //headBtn.onClick.RemoveAllListeners();
+        //headBtn.onClick.AddListener(() => customizer.ChangeHead_accItem()/*ChangeHeadItem()*/);
 
-        torsoBtn.onClick.RemoveAllListeners();
-        torsoBtn.onClick.AddListener(() => customizer.ChangeTorsoItem());
+        //torsoBtn.onClick.RemoveAllListeners();
+        //torsoBtn.onClick.AddListener(() => customizer.ChangeTorsoItem());
 
-        handsBtn.onClick.RemoveAllListeners();
-        handsBtn.onClick.AddListener(() => customizer.ChangeHandsItem());
+        //handsBtn.onClick.RemoveAllListeners();
+        //handsBtn.onClick.AddListener(() => customizer.ChangeHandsItem());
 
-        legsBtn.onClick.RemoveAllListeners();
-        legsBtn.onClick.AddListener(() => customizer.ChangeLegsItem());
+        //legsBtn.onClick.RemoveAllListeners();
+        //legsBtn.onClick.AddListener(() => customizer.ChangeLegsItem());
 
-        feetBtn.onClick.RemoveAllListeners();
-        feetBtn.onClick.AddListener(() => customizer.ChangeFeetItem());
+        //feetBtn.onClick.RemoveAllListeners();
+        //feetBtn.onClick.AddListener(() => customizer.ChangeFeetItem());
 
         weapon1Btn.onClick.RemoveAllListeners();
         weapon1Btn.onClick.AddListener(() => customizer.ChangeFirstWeapon());

@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e15623e60e6d6144fa6e8feabcca6a97, type: 2}
   - {fileID: 11400000, guid: c6eb47aaffdfa3c4fb0e9db1c7927680, type: 2}
   - {fileID: 11400000, guid: 6716ba2efad7b4b489ccaca3f1e62280, type: 2}
-  - {fileID: 11400000, guid: 17217b223d1927742b27be5bb0821c7e, type: 2}
+  - {fileID: 11400000, guid: aa17f9687c3f869478dfbabf302962a1, type: 2}
   - {fileID: 11400000, guid: fa055742e72bf504a9e03cb84cc9e593, type: 2}
   firstWeapons:
   - {fileID: 11400000, guid: b13ab7fda02cef1448b99241ac71af0d, type: 2}
@@ -25,7 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df080d6657611aa419ff7dc6612c899d, type: 2}
   head_accIdx: 0
   torsoIdx: 0
-  legsIdx: 0
+  legsIdx: 1
   headIdx: 0
   feetIdx: 0
   handsIdx: 0

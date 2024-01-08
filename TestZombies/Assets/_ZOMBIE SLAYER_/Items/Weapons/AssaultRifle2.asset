@@ -15,6 +15,7 @@ MonoBehaviour:
   weaponType: 1
   unlockDefault: 1
   gunName: AssaultRifle2
+  skinName: assault_riffles2
   icon: {fileID: 21300000, guid: 14c3696a69372d244816c13f9deb415d, type: 3}
   unlockPrice: 100
   animatorOverride: {fileID: 22100000, guid: 5fd4b63bbe6dc4a3eadc1a2b696d97cc, type: 2}
