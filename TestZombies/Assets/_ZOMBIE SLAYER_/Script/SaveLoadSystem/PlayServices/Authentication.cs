@@ -21,7 +21,7 @@ public class Authentication : MonoBehaviour
 
         PlayGamesPlatform.Instance.Authenticate(success =>
         {
-            authenticated = success;
+            //authenticated = success;
             OnAuthenticationSucceded();
         });
     }
@@ -36,12 +36,12 @@ public class Authentication : MonoBehaviour
 
     private PlayGamesPlatform BuildPlatform()
     {
-        var builder = new PlayGamesClientConfiguration.Builder();
-        builder.EnableSavedGames();
+        //var builder = new PlayGamesClientConfiguration.Builder();
+        //builder.EnableSavedGames();
 
         //builder.RequestServerAuthCode(false); // this line is not needed
 
-        PlayGamesPlatform.InitializeInstance(builder.Build());
+        //PlayGamesPlatform.InitializeInstance(builder.Build());
         PlayGamesPlatform.DebugLogEnabled = true;
         return PlayGamesPlatform.Activate();
     }

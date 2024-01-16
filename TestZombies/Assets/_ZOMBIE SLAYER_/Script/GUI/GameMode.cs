@@ -18,30 +18,30 @@ public class GameMode : MonoBehaviour
     public int setFPS = 60;
     float deltaTime = 0.0f;
 
-    public Purchaser purchase;
+    //public Purchaser purchase;
 
-    public void BuyItem(int id)
-    {
-        switch (id)
-        {
-            case 1:
-                purchase.BuyItem1();
-                break;
-            case 2:
-                purchase.BuyItem2();
-                break;
-            case 3:
-                purchase.BuyItem3();
-                break;
-            default:
-                break;
-        }
-    }
+    //public void BuyItem(int id)
+    //{
+    //    switch (id)
+    //    {
+    //        case 1:
+    //            purchase.BuyItem1();
+    //            break;
+    //        case 2:
+    //            purchase.BuyItem2();
+    //            break;
+    //        case 3:
+    //            purchase.BuyItem3();
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //}
 
-    public void BuyRemoveAds()
-    {
-        purchase.BuyRemoveAds();
-    }
+    //public void BuyRemoveAds()
+    //{
+    //    purchase.BuyRemoveAds();
+    //}
 
     private void Awake()
     {

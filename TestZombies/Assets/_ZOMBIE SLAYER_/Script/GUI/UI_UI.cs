@@ -18,10 +18,12 @@ public class UI_UI : MonoBehaviour
         bulletLeft.text = GameManager.Instance.Player.currentWeapon.bullet + "";
         gunIcon.sprite = GameManager.Instance.Player.currentWeapon.icon;
     }
+ 
 
     public void NextGun()
     {
-        GunManager.Instance.NextGun();
+        //GunManager.Instance.NextGun();
+        
     }
    
 }

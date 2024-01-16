@@ -1,9 +1,9 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class AdsManager : MonoBehaviour
-//{
+public class AdsManager : MonoBehaviour
+{
 //    public static AdsManager Instance;
 //    //delegate   ()
 //    public delegate void RewardedAdResult(bool isSuccess, int rewarded);
@@ -140,4 +140,4 @@
 //    }
 
 //    #endregion
-//}
+}

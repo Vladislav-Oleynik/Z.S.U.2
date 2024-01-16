@@ -988,16 +988,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7374440953910466631}
     - target: {fileID: 1900656376192099755, guid: fcd9ede7703047a43b4dd98c0dd1593b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: NextWeapon
+      value: NextGun
       objectReference: {fileID: 0}
     - target: {fileID: 1900656376192099755, guid: fcd9ede7703047a43b4dd98c0dd1593b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayerController, Assembly-CSharp
+      value: ChangeGun, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1941997727575078582, guid: fcd9ede7703047a43b4dd98c0dd1593b,
         type: 3}
@@ -1448,3 +1448,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fcd9ede7703047a43b4dd98c0dd1593b, type: 3}
+--- !u!114 &7374440953910466631 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2805863589195648313, guid: fcd9ede7703047a43b4dd98c0dd1593b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7374440953910466630}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0480204ca737e942acc1cce537bd089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

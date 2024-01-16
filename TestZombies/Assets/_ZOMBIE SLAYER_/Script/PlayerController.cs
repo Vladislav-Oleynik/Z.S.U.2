@@ -508,7 +508,8 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     {
         if (currentWeapon.bullet <= 0)
         {
-            GunManager.Instance.NextGun();
+            NextWeapon();
+            //GunManager.Instance.NextGun();
         }
     }
 

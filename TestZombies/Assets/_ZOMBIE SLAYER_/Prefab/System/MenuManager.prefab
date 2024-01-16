@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 2669602863633659165}
   - component: {fileID: 7058199241189411827}
   - component: {fileID: 1900656376192099755}
+  - component: {fileID: 2805863589195648313}
   m_Layer: 5
   m_Name: Gun Button
   m_TagString: Untagged
@@ -380,8 +381,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4010504037397836683}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 2805863589195648313}
+        m_TargetAssemblyTypeName: ChangeGun, Assembly-CSharp
         m_MethodName: NextGun
         m_Mode: 1
         m_Arguments:
@@ -392,6 +393,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2805863589195648313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718555425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0480204ca737e942acc1cce537bd089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &738417265
 GameObject:
   m_ObjectHideFlags: 0

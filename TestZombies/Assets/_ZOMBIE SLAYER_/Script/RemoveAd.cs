@@ -21,10 +21,10 @@ public class RemoveAd : MonoBehaviour
         }
     }
 
-    public void Buy()
-    {
-        SoundManager.Click();
-        GameMode.Instance.BuyRemoveAds();
-    }
+    //public void Buy()
+    //{
+    //    SoundManager.Click();
+    //    GameMode.Instance.BuyRemoveAds();
+    //}
 
 }

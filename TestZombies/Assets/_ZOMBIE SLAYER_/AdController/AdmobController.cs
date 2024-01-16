@@ -1,13 +1,13 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 //#if UNITY_ANDROID || UNITY_IOS
 ////using GoogleMobileAds.Api;
 //#endif
 //using System;
 
-//public class AdmobController : MonoBehaviour
-//{
+public class AdmobController : MonoBehaviour
+{
 //    public static AdmobController Instance;
 //    //delegate   ()
 //    public delegate void RewardedAdResult(bool isWatched);
@@ -254,4 +254,4 @@
 //    }
 //#endif
 //    #endregion
-//}
+}

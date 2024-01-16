@@ -132,12 +132,12 @@ public class CloudSaveManager : MonoBehaviour
 
     private void OpenCloudSave(Action<SavedGameRequestStatus, ISavedGameMetadata> callback)
     {
-        if (!Social.localUser.authenticated ||
-            !PlayGamesClientConfiguration.DefaultConfiguration.EnableSavedGames ||
-            string.IsNullOrEmpty(saveName))
-        {
-            Debug.LogError("OpenCloud Save Error!");
-        }
+        //if (!Social.localUser.authenticated ||
+        //    !PlayGamesClientConfiguration.DefaultConfiguration.EnableSavedGames ||
+        //    string.IsNullOrEmpty(saveName))
+        //{
+        //    Debug.LogError("OpenCloud Save Error!");
+        //}
 
         Authentication.platform.SavedGame.OpenWithAutomaticConflictResolution(
             saveName, _dataSource, _conflicts, callback);
