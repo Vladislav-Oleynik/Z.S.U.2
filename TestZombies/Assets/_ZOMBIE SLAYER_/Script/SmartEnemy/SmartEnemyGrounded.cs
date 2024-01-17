@@ -144,8 +144,9 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage {
 
 	void HandleAnimation(){
 		AnimSetFloat("speed", Mathf.Abs(finalSpeed.x) > 0 ? 1 : 0);
-		AnimSetBool ("isRunning", Mathf.Abs (finalSpeed.x) > walkSpeed);
-        AnimSetBool("isStunning", isStunning);
+		//old anims
+		//AnimSetBool ("isRunning", Mathf.Abs (finalSpeed.x) > walkSpeed);
+        //AnimSetBool("isStunning", isStunning);
     }
 
 	public void SetForce(float x, float y){

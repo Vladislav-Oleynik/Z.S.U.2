@@ -10,7 +10,7 @@ using Spine;
 public enum GunHandlerState { AVAILABLE, SWAPPING, RELOADING, EMPTY }
 public enum ShootingMethob { SingleShoot, AutoShoot}
 public enum WEAPON_STATE { MELEE, GUN}
-public enum PlayerState { Idle, Walk, Run }
+public enum PlayerState { Idle, Walk, Run, Dead }
 public enum PlayerAttackState { Idle, Shoot, Melee }
 
 [RequireComponent(typeof(PlayerSpineHelper))]

@@ -141,6 +141,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8132051250783871649}
     m_Modifications:
+    - target: {fileID: 92701746494477300, guid: 5b364780d09b940e08f1a8eb4b1ccfd8,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4998992265090290507, guid: 5b364780d09b940e08f1a8eb4b1ccfd8,
         type: 3}
       propertyPath: m_SortingOrder
@@ -555,11 +560,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8132051250783871649}
     m_Modifications:
+    - target: {fileID: 263568624, guid: fbb3b7f7fe0265040a38823a6e6f5037, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 938926409, guid: fbb3b7f7fe0265040a38823a6e6f5037, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 938926409, guid: fbb3b7f7fe0265040a38823a6e6f5037, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 938926410, guid: fbb3b7f7fe0265040a38823a6e6f5037, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fa87a631afeba479b9bfeafd8bee5cb8,
+      objectReference: {fileID: 21300000, guid: 212c4d651d36aa64b970c86f315fdcbc,
         type: 3}
+    - target: {fileID: 938926410, guid: fbb3b7f7fe0265040a38823a6e6f5037, type: 3}
+      propertyPath: m_DrawMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 938926410, guid: fbb3b7f7fe0265040a38823a6e6f5037, type: 3}
+      propertyPath: m_SpriteTileMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5819173856168309434, guid: fbb3b7f7fe0265040a38823a6e6f5037,
         type: 3}
       propertyPath: m_Name

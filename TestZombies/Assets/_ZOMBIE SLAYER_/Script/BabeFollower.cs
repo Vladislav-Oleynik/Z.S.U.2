@@ -1,9 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
+using Spine;
 
 public class BabeFollower : MonoBehaviour, ICanTakeDamage
 {
+    [Header("SPINE ANIMATION")]
+    public SkeletonAnimation skeletonAnimation;
+    [SpineSkin] public string baseSkin = "joan";
+    public AnimationReferenceAsset runAnim;
+    public AnimationReferenceAsset idleAnim;
+    public AnimationReferenceAsset walkAnim;
+    public AnimationReferenceAsset deathAnim;
+    [ReadOnly] public PlayerState currentPlayerState;
+    [ReadOnly] public PlayerAttackState currentPlayerAttackState;
+    public string currentAnim;
+
+
     [Header("SET UP")]
     public Animator anim;
     public float moveSpeed = 10;
@@ -59,7 +73,46 @@ public class BabeFollower : MonoBehaviour, ICanTakeDamage
             else if (Vector2.Distance(transform.position, GameManager.Instance.Player.transform.position) < stopDistance)
                 isMoving = false;
         }
-        anim.SetBool("isMoving", isMoving);
+        //anim.SetBool("isMoving", isMoving);
+        if (currentHealth > 0)
+        {
+            if (isMoving)
+            {
+                SetPlayerState(PlayerState.Run);
+            }
+            else
+            {
+                SetPlayerState(PlayerState.Idle);
+            }
+        }
+    }
+
+    public void SetPlayerState(PlayerState state)
+    {
+        currentPlayerState = state;
+
+        if (state.Equals(PlayerState.Idle))
+        {            
+            SetAnimation(idleAnim, true, 1f);
+        }
+        else if (state.Equals(PlayerState.Run))
+        {
+            SetAnimation(runAnim, true, 1f);
+        }
+        else if (state.Equals(PlayerState.Dead))
+        {
+            SetAnimation(deathAnim, false, 1f);
+        }
+    }
+
+    public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timeScale)
+    {
+        if (animation.name.Equals(currentAnim))
+        {
+            return;
+        }
+        skeletonAnimation.state.SetAnimation(0, animation, loop).TimeScale = timeScale;
+        currentAnim = animation.name;
     }
 
     public void MoveToHelicopter(Vector2 pos)
@@ -81,13 +134,14 @@ public class BabeFollower : MonoBehaviour, ICanTakeDamage
             healthBar.UpdateValue(currentHealth / (float)health);
         if (currentHealth <= 0)
         {
+            SetPlayerState(PlayerState.Dead);
             GameManager.Instance.GameOver();
-            anim.SetTrigger("dead");
+            //anim.SetTrigger("dead");
             SoundManager.PlaySfx(soundDie);
         }
         else
         {
-            anim.SetTrigger("hurt");
+            //anim.SetTrigger("hurt");
             SoundManager.PlaySfx(soundHurt);
         }
     }
