@@ -269,14 +269,13 @@ MonoBehaviour:
   soundHit: []
   soundDieVol: 0.8
   soundDie:
-  - {fileID: 8300000, guid: 1afa6824a988b4184a936cbef842e1f2, type: 3}
-  - {fileID: 8300000, guid: cbcca202d8f934e92832bd931e335c1a, type: 3}
-  - {fileID: 8300000, guid: 18e8cfa9ca94140a39d56b9326538272, type: 3}
+  - {fileID: 8300000, guid: ee5ae13b51edc974792fd827bcb79968, type: 3}
+  - {fileID: 8300000, guid: 3cf93642b882d5e478280e0c35ba6437, type: 3}
   soundShowUpVol: 0.6
   soundShowUp:
-  - {fileID: 8300000, guid: 79c5f732b41ab424d9e38b23e1d3ac34, type: 3}
-  - {fileID: 8300000, guid: f74af649fcbb845268fa05e5fc9ea5b9, type: 3}
-  - {fileID: 8300000, guid: 43174e1892ef64f478ef5f941d8bd317, type: 3}
+  - {fileID: 8300000, guid: 1eb88aa9a373f7c4eb3c3b99bedb7961, type: 3}
+  - {fileID: 8300000, guid: 16324a45709f01c43914dc42c02b0c87, type: 3}
+  - {fileID: 8300000, guid: 46554b5ebf0033f428c25dba397a1d67, type: 3}
   soundSpawnVol: 0.5
   soundSpawn: []
   currentHealth: 0
@@ -308,7 +307,7 @@ MonoBehaviour:
   MeleeObj: {fileID: 0}
   soundAttacksVol: 0.8
   soundAttacks:
-  - {fileID: 8300000, guid: 63ede2623f89b4ad4a290654d4494c28, type: 3}
+  - {fileID: 8300000, guid: 60864b9ed99966a4fa69006d15099d9f, type: 3}
 --- !u!50 &2942940229510002419
 Rigidbody2D:
   serializedVersion: 4

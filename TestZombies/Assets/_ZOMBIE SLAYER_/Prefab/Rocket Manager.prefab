@@ -72,7 +72,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocket: {fileID: 9054088835085800707, guid: a503cb9e704d243039c6fc77e5b710d2, type: 3}
-  sound: {fileID: 8300000, guid: 7d0030cf53a424f50a882514f4103702, type: 3}
+  sound: {fileID: 8300000, guid: e7757330c5047b94fb7df5892726265d, type: 3}
 --- !u!114 &1077262777
 MonoBehaviour:
   m_ObjectHideFlags: 0

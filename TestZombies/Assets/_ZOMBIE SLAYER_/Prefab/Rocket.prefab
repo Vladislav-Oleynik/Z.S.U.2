@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8638280bab57e48909a7f688eea97c0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundExplosion: {fileID: 8300000, guid: cd4baf8097b974bf89bb8fae240be0ae, type: 3}
+  soundExplosion: {fileID: 8300000, guid: a2888f6b068817342a1ee77851ac6654, type: 3}
   explosionFX: {fileID: 7587624716690234243, guid: 994223c5ff28d456fa58885404b14b3a,
     type: 3}
   damage: 150
@@ -114,6 +114,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

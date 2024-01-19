@@ -72,7 +72,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   helliAnim: {fileID: 6801340424330660509}
   sign: {fileID: 5576570460164279448}
-  soundFX: {fileID: 8300000, guid: 55d0860f7dcf84a27a6445567265fed6, type: 3}
+  soundFX: {fileID: 8300000, guid: 00451156613eee84d9ea9bc1fbb95670, type: 3}
+  isShowing: 0
 --- !u!1 &3763431318638855631
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +120,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -201,6 +203,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -336,6 +339,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

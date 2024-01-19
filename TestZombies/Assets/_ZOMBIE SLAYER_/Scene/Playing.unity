@@ -323,6 +323,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3034858571291879240, guid: 7686c0ada310fd846bf5c6596abfdcd6,
+        type: 3}
+      propertyPath: musicsGame
+      value: 
+      objectReference: {fileID: 8300000, guid: 76c0e4e417ccd41ea859e864b06cf197, type: 3}
     - target: {fileID: 3034858571291879241, guid: 7686c0ada310fd846bf5c6596abfdcd6,
         type: 3}
       propertyPath: m_RootOrder

@@ -271,8 +271,8 @@ MonoBehaviour:
   stopDistance: 1
   limitAbovePos: -0.8
   limitBelowPos: -3.65
-  soundHurt: {fileID: 8300000, guid: 535bb8963d30444108413144c06c4583, type: 3}
-  soundDie: {fileID: 8300000, guid: 84906a28d122547a6a862b902850890e, type: 3}
+  soundHurt: {fileID: 8300000, guid: f8e6e50a90e39bb42a85a6f90c156e71, type: 3}
+  soundDie: {fileID: 8300000, guid: 0291490bd5c527c4996b2fbad9ad959e, type: 3}
   health: 100
   healthBarOffset: {x: 0, y: 1.5}
   moveToHelicopter: 0

@@ -362,8 +362,8 @@ MonoBehaviour:
   limitBelowPos: -3.65
   limitLeft: 0
   limitRight: 0
-  soundHurt: {fileID: 8300000, guid: 14a72b2391c3c419eb6b0a468043ef80, type: 3}
-  soundDie: {fileID: 8300000, guid: b3509d96e793d48a699421db58332658, type: 3}
+  soundHurt: {fileID: 8300000, guid: 30407e927f5479d499f5ebb2c83c2a73, type: 3}
+  soundDie: {fileID: 8300000, guid: 2eb698f2a0415ef4c8f4a75435fe1fe9, type: 3}
   blockWayLayerMask:
     serializedVersion: 2
     m_Bits: 163840
@@ -398,8 +398,8 @@ MonoBehaviour:
   radiusCheck: 0.6
   delayToSync: 0.3
   checkPoint: {fileID: 1122272733}
-  soundSwap: {fileID: 8300000, guid: 6489c14c2ea344a34a28de3606ddaa45, type: 3}
-  soundAttack: {fileID: 8300000, guid: 62e2556d80d6d461db599be04f1d20f9, type: 3}
+  soundSwap: {fileID: 8300000, guid: 826209fb93370754ba93b2a95c62ab67, type: 3}
+  soundAttack: {fileID: 8300000, guid: 826209fb93370754ba93b2a95c62ab67, type: 3}
   lastAttackTime: -999
 --- !u!114 &6993140873147085520
 MonoBehaviour:

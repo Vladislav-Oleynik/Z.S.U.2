@@ -27,11 +27,11 @@ MonoBehaviour:
   accuracy: 0.9
   shellFX: {fileID: 0}
   shellPoint: {fileID: 0}
-  soundFire: {fileID: 8300000, guid: e785407df9bd14e6a8cbe448a0711bc0, type: 3}
+  soundFire: {fileID: 8300000, guid: b324dc6c7eed67b4dacd856705fdc2fb, type: 3}
   soundFireVolume: 0.5
   shellSound: {fileID: 0}
   shellSoundVolume: 0.5
-  reloadSound: {fileID: 8300000, guid: 568d0befeb07b45a2a895d68f1f81833, type: 3}
+  reloadSound: {fileID: 8300000, guid: 8eb154c4005be08478d5700b1fa558f1, type: 3}
   reloadSoundVolume: 0.5
   reloadPerShoot: 0
   dualShot: 0

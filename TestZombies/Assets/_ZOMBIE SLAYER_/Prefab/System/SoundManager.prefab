@@ -47,7 +47,7 @@ MonoBehaviour:
     type: 3}
   musicsGame: {fileID: 8300000, guid: b2b2e99485c0d4253b0bb1f2034fe04e, type: 3}
   musicsGameVolume: 0.3
-  soundClick: {fileID: 8300000, guid: 4484820e2beda6140b027c7a42b2932e, type: 3}
+  soundClick: {fileID: 8300000, guid: ffb0190038d39034ca5d12c51ee6e24c, type: 3}
   soundFail: {fileID: 8300000, guid: 3b0d48abff6bdc94aba83798ec8c78e2, type: 3}
   soundPause: {fileID: 8300000, guid: 203bf418f47fbc04fb6d43ffc3c1d7d6, type: 3}
   soundShowStagePanel: {fileID: 8300000, guid: 8d7550fb5f5b1a041bcae5ee3b250a20, type: 3}
