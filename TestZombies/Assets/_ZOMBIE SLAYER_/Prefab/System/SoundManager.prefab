@@ -46,7 +46,7 @@ MonoBehaviour:
   beginSoundInMainMenu: {fileID: 8300000, guid: 51f0c54706b53c14c9c24bbd63bb18a6,
     type: 3}
   musicsGame: {fileID: 8300000, guid: b2b2e99485c0d4253b0bb1f2034fe04e, type: 3}
-  musicsGameVolume: 0.3
+  musicsGameVolume: 0.517
   soundClick: {fileID: 8300000, guid: ffb0190038d39034ca5d12c51ee6e24c, type: 3}
   soundFail: {fileID: 8300000, guid: 3b0d48abff6bdc94aba83798ec8c78e2, type: 3}
   soundPause: {fileID: 8300000, guid: 203bf418f47fbc04fb6d43ffc3c1d7d6, type: 3}

@@ -46,6 +46,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3bfc1ee4fb7e54dc8a2991006f1bf48b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 66edb58c1d811224ebd0d1dcfb8a7713, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,9 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5481811535d7047d5a81c2cef7e3999e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunTypeID: {fileID: 8665540583737005285, guid: 596916fa92f484266a9debc185fa528b,
-    type: 3}
+  weapon: {fileID: 11400000, guid: b13ab7fda02cef1448b99241ac71af0d, type: 2}
   soundCollect: {fileID: 8300000, guid: 87ce51c2f2b5346b79350b4bd370cd5f, type: 3}
+  playerLoadout: {fileID: 11400000, guid: 70e3ad9e89db67340af2b8fc4092974e, type: 2}
 --- !u!58 &6981589317905194458
 CircleCollider2D:
   m_ObjectHideFlags: 0

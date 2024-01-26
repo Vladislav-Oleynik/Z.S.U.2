@@ -206,7 +206,7 @@ public class MenuManager : MonoBehaviour, IListener
         SoundManager.Click();
 
         //now we only have 3 levels, so we don't load other levels
-        if (GlobalValue.levelPlaying + 1 < 4)
+        if (GlobalValue.levelPlaying + 1 < 11)
         {
             GlobalValue.levelPlaying++;
             StartCoroutine(LoadAsynchronously(SceneManager.GetActiveScene().name));

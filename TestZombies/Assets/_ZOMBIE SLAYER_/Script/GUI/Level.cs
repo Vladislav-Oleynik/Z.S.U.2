@@ -14,11 +14,12 @@ public class Level : MonoBehaviour
     public TextMeshProUGUI numberTxt;
     public GameObject lockContainer, openingContainer, passedContainer;
 
-    public int tmplocklvl = 4;
+    public int tmplocklvl = 10;
 
     void Start()
     {
-        
+        Debug.LogWarning("GlobalValue.LevelPass: "+GlobalValue.LevelPass);
+
         var openLevel = isUnlock ? true : GlobalValue.LevelPass + 1 >= level;
 
         lockContainer.SetActive(false);
