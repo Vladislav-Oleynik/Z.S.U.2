@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     public AnimationReferenceAsset standMeleeAnim;
     public AnimationReferenceAsset walkMeleeAnim;
     public AnimationReferenceAsset runMeleeAnim;
+    public AnimationReferenceAsset deathAnim;
     [ReadOnly] public PlayerState currentPlayerState;
     [ReadOnly] public PlayerAttackState currentPlayerAttackState;
     public string currentAnim;
@@ -83,10 +84,12 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
     private void Awake()
     {
         CollectGunItem.onWeaponCollected.AddListener(SetGun);
+        BulletPack.onAmmoCollected.AddListener(ResetAllBullets);
     }
     private void OnDestroy()
     {
         CollectGunItem.onWeaponCollected.RemoveListener(SetGun);
+        BulletPack.onAmmoCollected.RemoveListener(ResetAllBullets);
     }
 
     void Start()
@@ -237,7 +240,7 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         SkeletonData skeletonData = skeleton.Data;
         Skin characterSkin = new Skin("gooset");
         characterSkin.AddSkin(skeletonData.FindSkin(baseSkin));
-        characterSkin.AddSkin(skeletonData.FindSkin(itemSkin));
+        characterSkin.AddSkin(skeletonData.FindSkin(currentWeapon.skinName));
         skeleton.SetSkin(characterSkin);
         skeleton.SetSlotsToSetupPose();
     }
@@ -300,6 +303,10 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
             {
                 SetAnimation(walkMeleeAnim, true, 1f);
             }
+        }
+        else if (state.Equals(PlayerState.Dead))
+        {            
+            SetAnimation(deathAnim, false, 1f);
         }
         SetPlayerAttackState(PlayerAttackState.Idle);
     }
@@ -393,14 +400,16 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
 
     public void Shoot()
     {
-        RaycastHit2D hit = Physics2D.CircleCast(playerMeleeWeapon.checkPoint.position, playerMeleeWeapon.radiusCheck, Vector2.zero, 0, targetLayer);
+        #region MeleeAttack
+        //comment this until we fix chainsaw
+        //RaycastHit2D hit = Physics2D.CircleCast(playerMeleeWeapon.checkPoint.position, playerMeleeWeapon.radiusCheck, Vector2.zero, 0, targetLayer);
 
-        if (hit)
-        {
-            MeleeAttack();
-            return;
-        }
-
+        //if (hit)
+        //{
+        //    MeleeAttack();
+        //    return;
+        //}
+        #endregion
         //if (weaponState == WEAPON_STATE.MELEE)
         //{
         //    //SetGun(GunManager.Instance.getGunID());
@@ -664,12 +673,13 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         if (currentHealth <= 0)
         {
             GameManager.Instance.GameOver();
-            AnimSetTrigger("dead");
+            SetPlayerState(PlayerState.Dead);
+            //AnimSetTrigger("dead");
             SoundManager.PlaySfx(soundDie);
         }
         else
         {
-            AnimSetTrigger("hurt");
+            //AnimSetTrigger("hurt");
             SoundManager.PlaySfx(soundHurt);
         }
     }

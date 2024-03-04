@@ -75,11 +75,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1561854319149056
-    m_Localized: MISSION
+    m_Localized: HELP
     m_Metadata:
       m_Items: []
   - m_Id: 1561918009655296
-    m_Localized: Mission text
+    m_Localized: The game is in early access and is a test version, allowing players
+      to experience the gameplay and provide feedback to the developers.
     m_Metadata:
       m_Items: []
   - m_Id: 1567896079843328

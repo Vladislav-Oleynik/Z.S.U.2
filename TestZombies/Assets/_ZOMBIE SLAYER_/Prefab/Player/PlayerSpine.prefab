@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 538245325727758296}
   - component: {fileID: 7727446281690048717}
   - component: {fileID: 6334536877077683240}
+  - component: {fileID: 4331935527585770291}
   m_Layer: 8
   m_Name: Spine GameObject (character)
   m_TagString: Untagged
@@ -184,6 +185,17 @@ MonoBehaviour:
   _animationName: 
   loop: 1
   timeScale: 1
+--- !u!210 &4331935527585770291
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299250354829573495}
+  m_Enabled: 1
+  m_SortingLayerID: -565348741
+  m_SortingLayer: 3
+  m_SortingOrder: 0
 --- !u!1 &3843347871386745642
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,6 +365,7 @@ MonoBehaviour:
   standMeleeAnim: {fileID: 11400000, guid: 892a7d20edb72204aa1283735f0c50bd, type: 2}
   walkMeleeAnim: {fileID: 11400000, guid: 892a7d20edb72204aa1283735f0c50bd, type: 2}
   runMeleeAnim: {fileID: 11400000, guid: 892a7d20edb72204aa1283735f0c50bd, type: 2}
+  deathAnim: {fileID: 11400000, guid: 3af7c59bb70606f408870492b240b18a, type: 2}
   currentPlayerState: 0
   currentPlayerAttackState: 0
   currentAnim: 

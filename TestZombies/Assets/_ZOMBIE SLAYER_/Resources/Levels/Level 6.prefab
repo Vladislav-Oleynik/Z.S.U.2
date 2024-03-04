@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mission:
-    missionType: 3
+    missionType: 4
     showHelicopter: 0
     timer: 180
   missionInformation: 

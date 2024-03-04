@@ -14,7 +14,7 @@ public class Level : MonoBehaviour
     public TextMeshProUGUI numberTxt;
     public GameObject lockContainer, openingContainer, passedContainer;
 
-    public int tmplocklvl = 10;
+    public int tmplocklvl = 11;
 
     void Start()
     {

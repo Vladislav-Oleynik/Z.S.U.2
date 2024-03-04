@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mission:
-    missionType: 2
+    missionType: 4
     showHelicopter: 1
     timer: 35
   missionInformation: 
@@ -748,19 +748,19 @@ PrefabInstance:
         type: 3}
       propertyPath: enemyWave.enemySpawns.Array.data[4].enemy.Array.data[0]
       value: 
-      objectReference: {fileID: 8885830814786365834, guid: 8a42c3f4494766942b7362c1737df6f9,
+      objectReference: {fileID: 3946748681848493890, guid: 4c9363e006bd047458448cada657f528,
         type: 3}
     - target: {fileID: 217799790614107673, guid: 5e1890ef7f27d439e949dae5c14468b7,
         type: 3}
       propertyPath: enemyWave.enemySpawns.Array.data[4].enemy.Array.data[1]
       value: 
-      objectReference: {fileID: 6095283598343155490, guid: 1d22479a8a9a454499d8b5f1c77eea2d,
+      objectReference: {fileID: 3946748681848493890, guid: 4c9363e006bd047458448cada657f528,
         type: 3}
     - target: {fileID: 217799790614107673, guid: 5e1890ef7f27d439e949dae5c14468b7,
         type: 3}
       propertyPath: enemyWave.enemySpawns.Array.data[4].enemy.Array.data[2]
       value: 
-      objectReference: {fileID: 3946748681848493890, guid: 76bd4471ba8a6d34cb7b57cb50b197dd,
+      objectReference: {fileID: 3946748681848493890, guid: 4c9363e006bd047458448cada657f528,
         type: 3}
     - target: {fileID: 217799790614107674, guid: 5e1890ef7f27d439e949dae5c14468b7,
         type: 3}

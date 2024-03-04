@@ -156,7 +156,11 @@ public class Enemy : MonoBehaviour,ICanTakeDamage, IListener {
         if (GameManager.Instance)
             GameManager.Instance.AddListener(this);
 
-        SoundManager.PlaySfx(soundShowUp, soundShowUpVol);
+
+        if (Random.value > 0.5f)
+        {
+            SoundManager.PlaySfx(soundShowUp, soundShowUpVol);
+        }
 
         isPlaying = true;
     }

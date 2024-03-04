@@ -20,7 +20,7 @@ public class LevelWave : MonoBehaviour
     }
 }
 
-public enum MISSION_TYPE { Normal, Survior, DefenseFence, ProtectMan}
+public enum MISSION_TYPE { Normal, Survior, DefenseFence, ProtectMan, EarlyAccess}
 public enum SHOW_HELICOPTER { OnStart, Timer}
 [System.Serializable]
 public class Mission

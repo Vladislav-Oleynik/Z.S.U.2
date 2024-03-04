@@ -72,11 +72,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1561854319149056
-    m_Key: mission
+    m_Key: helpmenu
     m_Metadata:
       m_Items: []
   - m_Id: 1561918009655296
-    m_Key: missionText
+    m_Key: helpText
     m_Metadata:
       m_Items: []
   - m_Id: 1567896079843328

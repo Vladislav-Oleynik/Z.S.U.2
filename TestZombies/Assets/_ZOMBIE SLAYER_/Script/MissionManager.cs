@@ -42,6 +42,8 @@ public class MissionManager : MonoBehaviour
                 missionInformation.text = "Reach to the helicopter!";
             else if (currentMission.missionType == MISSION_TYPE.ProtectMan)
                 missionInformation.text = "Rescue the babe";
+            else if (currentMission.missionType == MISSION_TYPE.EarlyAccess)
+                missionInformation.text = "The game is in early access and is a test version, allowing players to experience the gameplay and provide feedback to the developers.";
         }
         else
             missionInformation.text = LevelWave.Instance.missionInformation;

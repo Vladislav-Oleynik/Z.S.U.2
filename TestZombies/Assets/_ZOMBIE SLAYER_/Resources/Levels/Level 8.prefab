@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mission:
-    missionType: 0
+    missionType: 4
     showHelicopter: 1
     timer: 75
   missionInformation: Survive and Wait for the Helicopter

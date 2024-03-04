@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mission:
-    missionType: 0
+    missionType: 4
     showHelicopter: 0
     timer: 180
   missionInformation: 
@@ -1069,6 +1069,12 @@ PrefabInstance:
       propertyPath: spawnItem.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 363868155615164467, guid: 050519dd44e714ef59b77016bb0ba02e,
+        type: 3}
+      propertyPath: spawnItem.Array.data[0]
+      value: 
+      objectReference: {fileID: 4929780327802749877, guid: 2c519a61081704777a2b3a3f1cb71d71,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 050519dd44e714ef59b77016bb0ba02e, type: 3}
 --- !u!4 &8132051250214953555 stripped

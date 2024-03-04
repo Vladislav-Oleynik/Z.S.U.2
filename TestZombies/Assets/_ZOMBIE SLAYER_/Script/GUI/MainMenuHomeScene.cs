@@ -23,6 +23,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     public GameObject CharactersMenu;
     //public GameObject SettingsMenu;
     public GameObject MissionsMenu;
+    public GameObject HelpMenu;
     public GameObject GameModePopup;
     public GameObject ExitPopup;
 
@@ -56,6 +57,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(false);
         //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
+        HelpMenu.SetActive(false);
 
         UpdateMoneyText();
 
@@ -78,6 +80,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(false);
         //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
+        HelpMenu.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
 
@@ -89,6 +92,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(false);
         //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
+        HelpMenu.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(true);
     }
 
@@ -100,6 +104,7 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(true);
         //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(false);
+        HelpMenu.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
 
@@ -111,6 +116,7 @@ public class MainMenuHomeScene : MonoBehaviour {
     //    CharactersMenu.SetActive(false);
     //    //SettingsMenu.SetActive(true);
     //    MissionsMenu.SetActive(false);
+    //    HelpMenu.SetActive(false);
     //    GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     //}
 
@@ -122,6 +128,19 @@ public class MainMenuHomeScene : MonoBehaviour {
         CharactersMenu.SetActive(false);
         //SettingsMenu.SetActive(false);
         MissionsMenu.SetActive(true);
+        HelpMenu.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void OpenHelpMenu()
+    {
+        SoundManager.Click();
+        MainMenu.SetActive(false);
+        ShopMenu.SetActive(false);
+        CharactersMenu.SetActive(false);
+        //SettingsMenu.SetActive(false);
+        MissionsMenu.SetActive(false);
+        HelpMenu.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).gameObject.SetActive(false);
     }
 
