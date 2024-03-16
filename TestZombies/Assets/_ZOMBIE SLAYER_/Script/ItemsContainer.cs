@@ -29,6 +29,13 @@ public class ItemsContainer : MonoBehaviour
         secondWeaponsList = secondWeapons;
         firstWeaponIdx = secondWeaponIdx = 0;
 
+        GlobalValue.LoadPlayerLoadout(ref loadout);
+        
+    }
+    private void Start()
+    {
+        
+
         firstWeaponIdx = loadout.firstWeaponIdx;
         secondWeaponIdx = loadout.secondWeaponIdx;
 
@@ -46,10 +53,6 @@ public class ItemsContainer : MonoBehaviour
         //secondWeapon.sprite = secondWeaponsList[0].icon;
         else
             Debug.Log("secondWeaponsList.Count == 0");
-    }
-    private void Start()
-    {
-        
     }
 
     public void ChangeWeaponImage(bool isFirstWeapon = false)

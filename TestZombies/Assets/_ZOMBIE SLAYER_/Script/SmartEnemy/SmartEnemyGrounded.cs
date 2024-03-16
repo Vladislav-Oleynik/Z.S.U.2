@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
+using Spine;
+
+public enum EnemyState { Walk, Dead }
 
 [AddComponentMenu("ADDP/Enemy AI/Smart Enemy Ground Control")]
 public class SmartEnemyGrounded : Enemy, ICanTakeDamage {
@@ -9,7 +13,16 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage {
 	public bool isDead{ get; set; }
 
 	float velocityXSmoothing = 0;
-    
+
+    [Header("SPINE ANIMATION")]
+    public SkeletonAnimation skeletonAnimation;
+    [SpineSkin] public string baseSkin = "default";
+    [SpineSkin(dataField: "skeletonDataAsset")] public string itemSkin;
+    public AnimationReferenceAsset walkAnim;
+    public AnimationReferenceAsset deathAnim;
+    [ReadOnly] public EnemyState currentPlayerState;
+    public string currentAnim;
+
     [Header("New")]
 	bool allowCheckAttack = true;
 
@@ -76,7 +89,27 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage {
         }
 	}
 
-	void Flip(){
+    public void SetupEnemySkin()
+    {
+        Skeleton skeleton = skeletonAnimation.Skeleton;
+        SkeletonData skeletonData = skeleton.Data;
+        Skin characterSkin = new Skin("default");
+        characterSkin.AddSkin(skeletonData.FindSkin(baseSkin));
+        skeleton.SetSkin(characterSkin);
+        skeleton.SetSlotsToSetupPose();
+    }
+
+    public void SetAnimation(AnimationReferenceAsset animation, bool loop, float timeScale)
+    {
+        if (animation.name.Equals(currentAnim))
+        {
+            return;
+        }
+        skeletonAnimation.state.SetAnimation(0, animation, loop).TimeScale = timeScale;
+        currentAnim = animation.name;
+    }
+
+    void Flip(){
 		transform.rotation = Quaternion.Euler (new Vector3 (transform.rotation.x, isFacingRight () ? 180 : 0, transform.rotation.z));
 	}
     
@@ -144,8 +177,14 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage {
 
 	void HandleAnimation(){
 		AnimSetFloat("speed", Mathf.Abs(finalSpeed.x) > 0 ? 1 : 0);
-		//old anims
-		//AnimSetBool ("isRunning", Mathf.Abs (finalSpeed.x) > walkSpeed);
+
+        if (enemyState != ENEMYSTATE.DEATH)
+        {
+            SetAnimation(walkAnim, true, 1f);
+        }        
+
+        //old anims
+        //AnimSetBool ("isRunning", Mathf.Abs (finalSpeed.x) > walkSpeed);
         //AnimSetBool("isStunning", isStunning);
     }
 
@@ -190,9 +229,10 @@ public class SmartEnemyGrounded : Enemy, ICanTakeDamage {
 		}
         
 		StopAllCoroutines ();
-            StartCoroutine(DisableEnemy(AnimationHelper.getAnimationLength(anim, "Die") + 2f));
+            StartCoroutine(DisableEnemy(AnimationHelper.getAnimationLength(anim, "Die") + 4f));
+        SetAnimation(deathAnim, false, 1f);
 
-		GlobalValue.killedZombies++;
+        GlobalValue.killedZombies++;
     }
 
 	public override void Hit (Vector2 force, bool pushBack = false, bool knockDownRagdoll = false, bool shock = false)

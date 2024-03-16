@@ -478,13 +478,15 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
         var _dir = (isFacingRight ? Vector2.right : Vector2.left) + new Vector2(0, Random.Range(-(1f - currentWeapon.accuracy), (1f - currentWeapon.accuracy)));
         RaycastHit2D hit = Physics2D.Raycast(playerSpineHelper.GetFireWorldPoint() + (isFacingRight ? Vector2.left : Vector2.right), _dir, 100, targetLayer);
 
+        
         if (currentWeapon.muzzleTracerFX)
         {
             var _tempFX = SpawnSystemHelper.GetNextObject(currentWeapon.muzzleTracerFX, true);
             _tempFX.transform.position = playerSpineHelper.GetFireWorldPoint();
             _tempFX.transform.right = _dir;
         }
-
+        //temporary hiden fire effects
+        /*
         if (currentWeapon.muzzleFX)
         {
             var _muzzle = SpawnSystemHelper.GetNextObject(currentWeapon.muzzleFX, playerSpineHelper.GetFireWorldPoint(), true);
@@ -492,6 +494,7 @@ public class PlayerController : MonoBehaviour, ICanTakeDamage
             _muzzle.transform.right = (isFacingRight ? Vector2.right : Vector2.left);
             //_muzzle.transform.parent = firePoint;
         }
+        */
 
         if (hit)
         {
